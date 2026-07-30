@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería The Boss | Estilo & Cuidado Masculino</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           VARIABLES & RESET
+           ========================================================================== */
+        :root {
+            --primary: #D4AF37; /* Dorado Clásico */
+            --primary-hover: #f1c40f;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-surface: #262626;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+            --font-title: 'Oswald', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ==========================================================================
+           COMPONENTES REUTILIZABLES
+           ========================================================================== */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* ==========================================================================
+           HEADER & NAVEGACIÓN
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            height: 100vh;
+            min-height: 650px;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(18, 18, 18, 1)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 3.8rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           BENEFICIOS / CARACTERÍSTICAS
+           ========================================================================== */
+        .features {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-surface);
+            padding: 35px 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .feature-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           SERVICIOS & PRECIOS
+           ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .service-name {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .service-price {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .service-info {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .service-info i {
+            color: var(--primary);
+        }
+
+        .service-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        /* ==========================================================================
+           BARBEROS / EQUIPO
+           ========================================================================== */
+        .barbers {
+            background-color: var(--bg-card);
+        }
+
+        .barbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .barber-card {
+            background-color: var(--bg-surface);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .barber-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+
+        .barber-img {
+            height: 320px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .barber-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .barber-name {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .barber-role {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .barber-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* ==========================================================================
+           AGENDAMIENTO EN FRESHA (CTA SECCIÓN)
+           ========================================================================== */
+        .fresha-banner {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(18, 18, 18, 1) 100%),
+                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1600') center/cover;
+            background-blend-mode: overlay;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .fresha-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 50px 30px;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .fresha-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .fresha-step {
+            padding: 15px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: #000;
+            font-family: var(--font-title);
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            font-size: 1.2rem;
+        }
+
+        /* ==========================================================================
+           CONTACTO & UBICACIÓN
+           ========================================================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            min-height: 300px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            border: 0;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0 20px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-dark);
+                flex-direction: column;
+                justify-content: center;
+                gap: 35px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-scissors"></i> THE BOSS <span>BARBERS</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#barberos" class="nav-link">Barberos</a></li>
+                <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+                <!-- REEMPLAZA EL LINK CON TU ENLACE DIRECTO DE FRESHA -->
+                <li><a href="https://www.fresha.com" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Agendar Cita</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-star"></i> La Experiencia Definitiva</span>
+            <h1 class="hero-title">Cortes de Clase, <span>Estilo Único</span></h1>
+            <p class="hero-description">Especialistas en cortes clásicos, fades modernos, perfilado de barba y cuidado masculino. Reserva tu espacio en segundos sin filas ni esperas.</p>
+            <div class="hero-buttons">
+                <!-- REEMPLAZA EL LINK DE FRESHA AQUÍ -->
+                <a href="https://www.fresha.com" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-calendar-check"></i> Agendar en Fresha
+                </a>
+                <a href="#servicios" class="btn btn-outline">Ver Servicios y Precios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section class="features section-padding">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-user-ninja feature-icon"></i>
+                    <h3 class="feature-title">Barberos Expertos</h3>
+                    <p class="feature-text">Profesionales capacitados en las últimas tendencias y técnicas de barbería tradicional.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-clock feature-icon"></i>
+                    <h3 class="feature-title">Sin Esperas</h3>
+                    <p class="feature-text">Agendamiento puntual a través de Fresha. Tu tiempo vale oro y lo respetamos.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-whiskey-glass feature-icon"></i>
+                    <h3 class="feature-title">Bebida de Cortesía</h3>
+                    <p class="feature-text">Disfruta de un café expreso o una cerveza bien fría mientras renovamos tu imagen.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-pump-soap feature-icon"></i>
+                    <h3 class="feature-title">Productos Premium</h3>
+                    <p class="feature-text">Utilizamos pomadas, aceites y tónicos de la más alta calidad para tu cabello y barba.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS Y PRECIOS -->
+    <section class="section-padding" id="servicios">
+        <div class="container">
+            <h2 class="section-title text-center">Nuestros Servicios</h2>
+            <p class="section-subtitle text-center">Selecciona el servicio que deseas y resérvalo directamente en la agenda de tu barbero favorito.</p>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <h3 class="service-name">Corte Clásico / Fade</h3>
+                            <span class="service-price">$25.000</span>
+                        </div>
+                        <div class="service-info">
+                            <span><i class="fa-regular fa-clock"></i> 40 min</span>
+                            <span><i class="fa-solid fa-spray-can"></i> Incluye Lavado & Peinado</span>
+                        </div>
+                        <p class="service-description">Asesoría de imagen, corte adaptado a tu tipo de rostro, lavado relajante con masaje capilar y peinado con producto profesional.</p>
+                    </div>
+                    <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center;">Agendar Servicio</a>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <h3 class="service-name">Perfilado de Barba</h3>
+                            <span class="service-price">$18.000</span>
+                        </div>
+                        <div class="service-info">
+                            <span><i class="fa-regular fa-clock"></i> 30 min</span>
+                            <span><i class="fa-solid fa-hot-tub-person"></i> Toalla Caliente</span>
+                        </div>
+                        <p class="service-description">Diseño y delineado a navaja, hidratación con aceites esenciales y tratamiento con toalla caliente para abrir poros y relajar la piel.</p>
+                    </div>
+                    <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center;">Agendar Servicio</a>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card" style="border-color: var(--primary);">
+                    <div style="position: absolute; top: 10px; right: 10px; background: var(--primary); color: #000; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 3px; text-transform: uppercase;">Más Popular</div>
+                    <div>
+                        <div class="service-header">
+                            <h3 class="service-name">Combo Imperio (Corte + Barba)</h3>
+                            <span class="service-price">$38.000</span>
+                        </div>
+                        <div class="service-info">
+                            <span><i class="fa-regular fa-clock"></i> 60 min</span>
+                            <span><i class="fa-solid fa-crown"></i> Experiencia Completa</span>
+                        </div>
+                        <p class="service-description">El paquete completo para el caballero. Incluye corte completo, arreglo de barba con ritual de toalla caliente y bebida premium gratis.</p>
+                    </div>
+                    <a href="https://www.fresha.com" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center;">Agendar Combo</a>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <h3 class="service-name">Corte Infantil</h3>
+                            <span class="service-price">$20.000</span>
+                        </div>
+                        <div class="service-info">
+                            <span><i class="fa-regular fa-clock"></i> 30 min</span>
+                            <span><i class="fa-solid fa-child"></i> Menores de 12 años</span>
+                        </div>
+                        <p class="service-description">Paciencia, buen trato y los mejores cortes modernos para los más pequeños de la casa en un ambiente cómodo.</p>
+                    </div>
+                    <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center;">Agendar Servicio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONOCE A LOS BARBEROS -->
+    <section class="barbers section-padding" id="barberos">
+        <div class="container">
+            <h2 class="section-title text-center">Nuestro Equipo</h2>
+            <p class="section-subtitle text-center">Elige al especialista de tu preferencia al momento de reservar en Fresha.</p>
+
+            <div class="barbers-grid">
+                <!-- Barbero 1 -->
+                <div class="barber-card">
+                    <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&q=80&w=600" alt="Barbero Carlos" class="barber-img">
+                    <div class="barber-info">
+                        <h3 class="barber-name">Carlos "Master"</h3>
+                        <p class="barber-role">Especialista en Fades & Diseños</p>
+                        <p class="barber-bio">Más de 8 años de experiencia. Maestro en degradados pulidos y arreglos de barba de alta precisión.</p>
+                        <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Carlos</a>
+                    </div>
+                </div>
+
+                <!-- Barbero 2 -->
+                <div class="barber-card">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600" alt="Barbero Mateo" class="barber-img">
+                    <div class="barber-info">
+                        <h3 class="barber-name">Mateo Silva</h3>
+                        <p class="barber-role">Especialista en Corte Clásico & Tijera</p>
+                        <p class="barber-bio">Apasionado por la barbería tradicional, estilos ejecutivos y mantenimiento saludable del cabello masculino.</p>
+                        <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Mateo</a>
+                    </div>
+                </div>
+
+                <!-- Barbero 3 -->
+                <div class="barber-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Barbero Alejandro" class="barber-img">
+                    <div class="barber-info">
+                        <h3 class="barber-name">Alejandro Ruiz</h3>
+                        <p class="barber-role">Especialista en Barba & Spa</p>
+                        <p class="barber-bio">Experto en la técnica de toalla caliente, perfilado con navaja y tratamientos de exfoliación e hidratación facial.</p>
+                        <a href="https://www.fresha.com" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Alejandro</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CTA FRESHA -->
+    <section class="fresha-banner section-padding">
+        <div class="container">
+            <div class="fresha-box">
+                <h2 class="section-title" style="color: #fff;">Agenda tu Cita en 3 Pasos</h2>
+                <p style="color: var(--text-muted);">Sin llamadas, sin chats interminables. Sistema instantáneo 24/7 en español.</p>
+                
+                <div class="fresha-steps">
+                    <div class="fresha-step">
+                        <div class="step-number">1</div>
+                        <h4 style="font-family: var(--font-title); margin-bottom: 5px;">ELIGE SERVICIO</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Selecciona tu corte o combo preferido.</p>
+                    </div>
+                    <div class="fresha-step">
+                        <div class="step-number">2</div>
+                        <h4 style="font-family: var(--font-title); margin-bottom: 5px;">ELIGE BARBERO Y HORA</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Ve la disponibilidad en tiempo real.</p>
+                    </div>
+                    <div class="fresha-step">
+                        <div class="step-number">3</div>
+                        <h4 style="font-family: var(--font-title); margin-bottom: 5px;">¡CONFIRMA Y LISTO!</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Recibes tu confirmación en tu correo.</p>
+                    </div>
+                </div>
+
+                <a href="https://www.fresha.com" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 40px;">
+                    <i class="fa-solid fa-calendar-days"></i> Abrir Agenda Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN, HORARIOS Y CONTACTO -->
+    <section class="section-padding" id="contacto">
+        <div class="container">
+            <h2 class="section-title text-center">Visítanos</h2>
+            <p class="section-subtitle text-center">Estamos ubicados en una zona central y de fácil acceso con parqueadero cercano.</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-details">
+                            <h4>Dirección</h4>
+                            <p>Calle Principal #12-34, Zona Centro<br>Ciudad, Colombia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="contact-details">
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Sábado: 9:00 AM - 8:00 PM<br>Domingos y Festivos: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Teléfono / WhatsApp</h4>
+                            <p>+57 300 123 4567</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <a href="https://wa.me/573001234567" target="_blank" class="btn btn-outline" style="border-color: #25D366; color: #25D366;">
+                            <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MAPA DE GOOGLE MAPS -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15908.123456789!2d-74.072092!3d4.60971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a77e402b9b%3A0x1b1b1b1b1b1b1b1b!2sBogot%C3%A1!5e0!3m2!1ses!2sco!4v1600000000000!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Barbería El Imperio. Todos los derechos reservados. Página web diseñada para integración con Fresha.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PARA EL MENÚ MÓVIL RESPONSIVO -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Toggle del menú hamburguesa en celulares
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        // Cerrar el menú al hacer clic en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                if (hamburger.querySelector('i').classList.contains('fa-xmark')) {
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                    hamburger.querySelector('i').classList.remove('fa-xmark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

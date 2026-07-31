@@ -11,42 +11,124 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    /* Estilos de la ventana ampliada (Modal) */
-    .modal-galeria {
-        display: none; 
-        position: fixed;
-        z-index: 9999; 
-        padding-top: 80px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9); 
-    }
+        /* ==========================================================================
+           ESTILOS DE LA VENTANA MODAL ESTILO GALERÍA (FACEBOOK VIEWER)
+           ========================================================================== */
+        .modal-galeria {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
 
-    .modal-contenido {
-        margin: auto;
-        display: block;
-        width: 90%;
-        max-width: 600px; 
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(255,215,0, 0.3); 
-    }
+        .modal-dialog-box {
+            position: relative;
+            display: flex;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            animation: modalFadeIn 0.3s ease;
+        }
 
-    .cerrar-modal {
-        position: absolute;
-        top: 20px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-    .cerrar-modal:hover {
-        color: #d4af37; 
-    }
-</style>
+        .modal-img-pane {
+            flex: 1.2;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+        }
+
+        .modal-img-pane img {
+            width: 100%;
+            height: 100%;
+            max-height: 550px;
+            object-fit: cover;
+        }
+
+        .modal-text-pane {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: var(--transition);
+        }
+
+        .cerrar-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(18, 18, 18, 0.85);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .modal-nav:hover {
+            background-color: var(--primary);
+            color: #000;
+        }
+
+        .modal-prev { left: 20px; }
+        .modal-next { right: 20px; }
+
+        @media (max-width: 768px) {
+            .modal-dialog-box {
+                flex-direction: column;
+                max-height: 85vh;
+                overflow-y: auto;
+            }
+            .modal-img-pane {
+                min-height: 280px;
+            }
+            .modal-text-pane {
+                padding: 25px;
+            }
+            .modal-prev { left: 10px; }
+            .modal-next { right: 10px; }
+        }
+    </style>
     <style>
         /* ==========================================================================
            VARIABLES & RESET
@@ -431,6 +513,12 @@
             height: 320px;
             width: 100%;
             object-fit: cover;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .barber-img:hover {
+            opacity: 0.85;
         }
 
         .barber-info {
@@ -678,7 +766,6 @@
                 <li><a href="#servicios" class="nav-link">Servicios</a></li>
                 <li><a href="#barberos" class="nav-link">Barberos</a></li>
                 <li><a href="#contacto" class="nav-link">Ubicación</a></li>
-                <!-- REEMPLAZA EL LINK CON TU ENLACE DIRECTO DE FRESHA -->
                 <li><a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Agendar Cita</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -694,7 +781,6 @@
             <h1 class="hero-title">Cortes de Clase, <span>Estilo Único</span></h1>
             <p class="hero-description">Especialistas en cortes clásicos, fades modernos, perfilado de barba y cuidado masculino. Reserva tu espacio en segundos sin filas ni esperas.</p>
             <div class="hero-buttons">
-                <!-- REEMPLAZA EL LINK DE FRESHA AQUÍ -->
                 <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-primary">
                     <i class="fa-solid fa-calendar-check"></i> Agendar en Fresha
                 </a>
@@ -810,31 +896,52 @@
     <section class="barbers section-padding" id="barberos">
         <div class="container">
             <h2 class="section-title text-center">Nuestro Equipo</h2>
-            <p class="section-subtitle text-center">Elige al especialista de tu preferencia al momento de reservar en Fresha.</p>
+            <p class="section-subtitle text-center">Haz clic en la foto de cualquier barbero para abrir la galería ampliada, o elige directamente al reservar en Fresha.</p>
 
             <div class="barbers-grid">
-    <!-- Barbero 1 -->
-    <div class="barber-card">
-        <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img">
-        <div class="barber-info">
-            <h3 class="barber-name">Nicolás Acevedo "Horus MC"</h3>
-            <p class="barber-role">Especialista en Fades, Diseños & Freestyle</p>
-            <p class="barber-bio">Más de 8 años de experiencia. Maestro en degradados pulidos y arreglos de barba de alta precisión.</p>
-            <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Makakikuz</a>
-        </div>
-    </div>
+                <!-- Barbero 1 -->
+                <div class="barber-card">
+                    <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img" title="Haz clic para ver galería">
+                    <div class="barber-info">
+                        <h3 class="barber-name">Nicolás Acevedo "Horus MC"</h3>
+                        <p class="barber-role">Especialista en Fades, Diseños & Freestyle</p>
+                        <p class="barber-bio">Más de 8 años de experiencia. Maestro en degradados pulidos y arreglos de barba de alta precisión.</p>
+                        <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Makakikuz</a>
+                    </div>
+                </div>
 
-    <!-- Barbero 2 -->
-    <div class="barber-card">
-        <img src="imagenes/Leonisa_Style.jpg" alt="Barbero Leonardo Nossa" class="barber-img">
-        <div class="barber-info">
-            <h3 class="barber-name">Leonardo Nossa</h3>
-            <p class="barber-role">Especialista en Asesoría de Imagen, Barbería Profesional</p>
-            <p class="barber-bio">Apasionado por la barbería moderna y tradicional, estilos ejecutivos y mantenimiento saludable del cabello masculino.</p>
-            <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con LEONISA</a>
+                <!-- Barbero 2 -->
+                <div class="barber-card">
+                    <img src="imagenes/Leonisa_Style.jpg" alt="Barbero Leonardo Nossa" class="barber-img" title="Haz clic para ver galería">
+                    <div class="barber-info">
+                        <h3 class="barber-name">Leonardo Nossa</h3>
+                        <p class="barber-role">Especialista en Asesoría de Imagen, Barbería Profesional</p>
+                        <p class="barber-bio">Apasionado por la barbería moderna y tradicional, estilos ejecutivos y mantenimiento saludable del cabello masculino.</p>
+                        <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con LEONISA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENTANA MODAL ESTILO GALERÍA (FACEBOOK VIEWER) -->
+    <div id="modalGaleria" class="modal-galeria">
+        <span class="cerrar-modal" id="cerrarModal">&times;</span>
+        <button class="modal-nav modal-prev" id="prevModal"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="modal-nav modal-next" id="nextModal"><i class="fa-solid fa-chevron-right"></i></button>
+        
+        <div class="modal-dialog-box">
+            <div class="modal-img-pane">
+                <img id="modalImg" src="" alt="Barbero Galería">
+            </div>
+            <div class="modal-text-pane">
+                <h3 id="modalName" style="color: var(--primary); font-family: var(--font-title); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 5px;"></h3>
+                <p id="modalRole" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;"></p>
+                <p id="modalBio" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;"></p>
+                <a id="modalBtn" href="" target="_blank" class="btn btn-primary" style="padding: 12px 24px; text-align: center;">Reservar Cita</a>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- SECCIÓN CTA FRESHA -->
     <section class="fresha-banner section-padding">
@@ -909,7 +1016,7 @@
 
                 <!-- MAPA DE GOOGLE MAPS -->
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1350.0237169530822!2d-74.0582098!3d4.7192069!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f850aa3f0ced1%3A0x9481f7426ed45a26!2sThe%20Boss%20Barber%E2%80%99s!5e1!3m2!1sen!2sco!4v1785443858019!5m2!1sen!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1350.0237169530822!2d-74.0582098!3d4.7192069!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f850aa3f0ced1%3A0x9481f7426ed45a26!2sThe%20Boss%20Barber%E2%80%99s!5e1!3m2!1sen!2sco!4v1785443858019!5m2!1sen!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
         </div>
@@ -928,20 +1035,19 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA EL MENÚ MÓVIL RESPONSIVO -->
+    <!-- SCRIPTS -->
     <script>
+        // Menú móvil responsivo
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        // Toggle del menú hamburguesa en celulares
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             hamburger.querySelector('i').classList.toggle('fa-bars');
             hamburger.querySelector('i').classList.toggle('fa-xmark');
         });
 
-        // Cerrar el menú al hacer clic en un enlace
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -950,6 +1056,68 @@
                     hamburger.querySelector('i').classList.remove('fa-xmark');
                 }
             });
+        });
+
+        // Lógica de la Galería Modal tipo Facebook para los Barberos
+        const barberCards = document.querySelectorAll('.barber-card');
+        const modal = document.getElementById('modalGaleria');
+        const cerrarModal = document.getElementById('cerrarModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalName = document.getElementById('modalName');
+        const modalRole = document.getElementById('modalRole');
+        const modalBio = document.getElementById('modalBio');
+        const modalBtn = document.getElementById('modalBtn');
+        const prevModal = document.getElementById('prevModal');
+        const nextModal = document.getElementById('nextModal');
+
+        let currentIndex = 0;
+        const barbersData = [];
+
+        // Extraer los datos de cada tarjeta de forma automática
+        barberCards.forEach((card, index) => {
+            const img = card.querySelector('.barber-img').src;
+            const name = card.querySelector('.barber-name').textContent;
+            const role = card.querySelector('.barber-role').textContent;
+            const bio = card.querySelector('.barber-bio').textContent;
+            const btnHref = card.querySelector('.btn').href;
+
+            barbersData.push({ img, name, role, bio, btnHref });
+
+            // Al hacer clic en la imagen del barbero se abre el modal
+            card.querySelector('.barber-img').addEventListener('click', () => {
+                currentIndex = index;
+                updateModal();
+                modal.style.display = 'flex';
+            });
+        });
+
+        function updateModal() {
+            const data = barbersData[currentIndex];
+            modalImg.src = data.img;
+            modalName.textContent = data.name;
+            modalRole.textContent = data.role;
+            modalBio.textContent = data.bio;
+            modalBtn.href = data.btnHref;
+        }
+
+        nextModal.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % barbersData.length;
+            updateModal();
+        });
+
+        prevModal.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + barbersData.length) % barbersData.length;
+            updateModal();
+        });
+
+        cerrarModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
         });
     </script>
     

@@ -973,3 +973,25 @@ footer {
 .accordion-item.active .accordion-header {
     border-bottom: 1px solid var(--border-color);
 }
+/* ==========================================================================
+   CORRECCIÓN DE PRECIOS PARA PANTALLAS PEQUEÑAS (CELULARES)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .price-row {
+        gap: 5px; /* Reduce un poco el espacio entre nombre y precio */
+    }
+    
+    .price-name {
+        font-size: 1.1rem; /* Reduce ligeramente el tamaño del nombre */
+        white-space: normal; /* Permite que el nombre pase a otra línea si no cabe */
+        line-height: 1.3;
+    }
+    
+    .price-cost {
+        font-size: 1.2rem; /* Ajusta el tamaño del precio */
+    }
+
+    .accordion-content {
+        padding: 20px 15px; /* Reduce un poco los márgenes laterales del cuadro oscuro para ganar espacio */
+    }
+}

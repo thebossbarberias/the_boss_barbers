@@ -249,6 +249,18 @@
             transform: translateY(-3px);
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 85px;       /* Puedes ajustarlo a 40px o 50px según qué tan grande lo prefieras */
+            width: auto;        /* Mantiene la proporción horizontal exacta del diseño */
+            object-fit: contain;
+        }
+
         /* ==========================================================================
            HEADER & NAVEGACIÓN
            ========================================================================== */
@@ -759,7 +771,7 @@
     <header>
         <div class="container navbar">
             <a href="#" class="logo">
-                <i class="fa-solid fa-scissors"></i> THE BOSS <span>BARBER'S</span>
+                <img src="Logo_Portada.jpeg" alt="The Boss Barber's Logo" class="logo-img">
             </a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>

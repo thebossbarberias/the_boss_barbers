@@ -916,5 +916,22 @@
             });
         });
     </script>
+    <!-- Fondo oscuro y ventana de la galería ampliada -->
+<div id="galeriaModal" class="modal-galeria">
+    <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
+    <img class="modal-contenido" id="imagenAmpliada">
+</div>
+
+<!-- Motor para abrir y cerrar la galería -->
+<script>
+    function abrirGaleria(rutaImagen) {
+        document.getElementById('galeriaModal').style.display = 'block';
+        document.getElementById('imagenAmpliada').src = rutaImagen;
+    }
+
+    function cerrarGaleria() {
+        document.getElementById('galeriaModal').style.display = 'none';
+    }
+</script>
 </body>
 </html>

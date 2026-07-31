@@ -689,19 +689,20 @@ footer {
 /* ==========================================================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
-@media (max-width: 992px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-}
-
 @media (max-width: 768px) {
     .navbar {
         height: 70px;
+        position: relative; /* Clave para poder centrar el logo exactamente a la mitad */
     }
 
     header {
         height: 70px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centra el logo de forma matemática */
     }
 
     .logo-img {
@@ -712,6 +713,7 @@ footer {
         display: block;
         font-size: 1.5rem;
         color: var(--text-light);
+        margin-left: auto; /* Mantiene el botón hamburguesa pegado a la derecha */
     }
 
     .nav-menu {

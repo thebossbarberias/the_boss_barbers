@@ -751,39 +751,40 @@ footer {
         text-align: center;
     }
 
-        /* ==========================================================================
-   CARTA DE SERVICIOS Y PRECIOS (ESTILO DOS COLUMNAS)
+       /* ==========================================================================
+   CARTA DE SERVICIOS Y PRECIOS (ESTILO CLÁSICO 2 COLUMNAS + PUNTITOS)
    ========================================================================== */
     .services-hero {
-        height: 50vh;
-        min-height: 380px;
+        height: 55vh;
+        min-height: 400px;
         background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(18, 18, 18, 1)), 
                     url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-top: 80px;
+        /* Solución definitiva para que no quede montado sobre el header fijo de 80px */
+        padding-top: 100px; 
         border-bottom: 1px solid var(--border-color);
     }
 
     .price-list-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-        gap: 30px;
-        max-width: 1100px;
+        grid-template-columns: repeat(2, 1fr); /* Forzamos estrictamente 2 columnas en escritorios */
+        gap: 25px 40px;
+        max-width: 1200px;
         margin: 0 auto;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         .price-list-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* En pantallas medianas o celulares pasa a 1 columna */
         }
     }
 
     .price-item {
         background-color: var(--bg-card);
         border: 1px solid var(--border-color);
-        padding: 25px 30px;
+        padding: 20px 25px;
         border-radius: 8px;
         transition: var(--transition);
     }
@@ -794,32 +795,42 @@ footer {
         box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    .price-item-header {
+    /* Fila superior de la tarjeta: Nombre ........ Precio */
+    .price-row {
         display: flex;
-        justify-content: space-between;
         align-items: baseline;
-        margin-bottom: 10px;
-        border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
-        padding-bottom: 10px;
+        gap: 10px;
+        margin-bottom: 8px;
     }
 
-    .price-item-title {
+    .price-name {
         font-family: var(--font-title);
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+        color: var(--text-light);
+        white-space: nowrap; /* Evita que el nombre se rompa feo */
     }
 
-    .price-item-cost {
+    /* Los puntitos automáticos clásicos */
+    .price-dots {
+        flex-grow: 1;
+        border-bottom: 2px dotted rgba(212, 175, 55, 0.35); /* Puntitos dorados elegantes */
+        height: 10px;
+    }
+
+    .price-cost {
         font-family: var(--font-title);
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         color: var(--primary);
         font-weight: 700;
+        white-space: nowrap;
     }
 
-    .price-item-desc {
+    .price-desc {
         color: var(--text-muted);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         line-height: 1.5;
+        margin: 0;
     }
     }

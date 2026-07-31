@@ -10,7 +10,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <style>
+    /* Estilos de la ventana ampliada (Modal) */
+    .modal-galeria {
+        display: none; 
+        position: fixed;
+        z-index: 9999; 
+        padding-top: 80px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9); 
+    }
+
+    .modal-contenido {
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 600px; 
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(255,215,0, 0.3); 
+    }
+
+    .cerrar-modal {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .cerrar-modal:hover {
+        color: #d4af37; 
+    }
+</style>
     <style>
         /* ==========================================================================
            VARIABLES & RESET
@@ -916,22 +952,6 @@
             });
         });
     </script>
-    <!-- Fondo oscuro y ventana de la galería ampliada -->
-<div id="galeriaModal" class="modal-galeria">
-    <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
-    <img class="modal-contenido" id="imagenAmpliada">
-</div>
-
-<!-- Motor para abrir y cerrar la galería -->
-<script>
-    function abrirGaleria(rutaImagen) {
-        document.getElementById('galeriaModal').style.display = 'block';
-        document.getElementById('imagenAmpliada').src = rutaImagen;
-    }
-
-    function cerrarGaleria() {
-        document.getElementById('galeriaModal').style.display = 'none';
-    }
-</script>
+    
 </body>
 </html>

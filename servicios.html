@@ -48,92 +48,142 @@
         </div>
     </section>
 
-      <!-- LISTA DE PRECIOS ESTILO CLÁSICO CON PUNTITOS -->
+    <!-- SECCIÓN DE SERVICIOS CON BUSCADOR, FILTROS Y ACORDEONES -->
     <section class="section-padding">
         <div class="container">
             <h2 class="section-title text-center">Carta de Precios</h2>
             <p class="section-subtitle text-center">Elige tu estilo ideal y agenda directamente en nuestra plataforma en segundos.</p>
             
-            <div class="price-list-grid">
+            <!-- Barra de Búsqueda y Filtros -->
+            <div class="services-tools">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar servicio (ej. fade, barba, color)...">
+                </div>
                 
-                <!-- Item 1 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Corte Clásico / Fade</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$25.000</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="combos">🔥 Combos</button>
+                    <button class="filter-btn" data-filter="cabello">✂️ Cabello</button>
+                    <button class="filter-btn" data-filter="barba">💈 Barba</button>
+                    <button class="filter-btn" data-filter="facial">✨ Cuidado Facial</button>
+                </div>
+            </div>
+
+            <!-- Contenedor de Acordeones -->
+            <div class="accordions-container" id="menuAcordeon">
+
+                <!-- CATEGORÍA: COMBOS -->
+                <div class="accordion-item" data-category="combos">
+                    <div class="accordion-header">
+                        <div class="accordion-title">🔥 Combos</div>
+                        <i class="fa-solid fa-plus accordion-icon"></i>
                     </div>
-                    <p class="price-desc">Un buen corte de pelo es el mejor accesorio que un hombre puede tener. Incluye lavado y peinado.</p>
+                    <div class="accordion-content">
+                        <!-- Mantenemos el grid de 2 columnas aquí adentro -->
+                        <div class="price-list-grid">
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Corte + Afeitado Real</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$45.000</span>
+                                </div>
+                                <p class="price-desc">Nuestros servicios excepcionales todos juntos para ti. Corte completo y ritual de barba.</p>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Corte + Recorte de Barba</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$38.000</span>
+                                </div>
+                                <p class="price-desc">Barba y afeitado, nosotros le damos la diferencia que te hace lucir con clase.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Corte + Afeitado Real (Combo)</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$45.000</span>
+                <!-- CATEGORÍA: CABELLO -->
+                <div class="accordion-item" data-category="cabello">
+                    <div class="accordion-header">
+                        <div class="accordion-title">✂️ Cabello</div>
+                        <i class="fa-solid fa-plus accordion-icon"></i>
                     </div>
-                    <p class="price-desc">Nuestros servicios excepcionales todos juntos para ti. Corte completo y ritual de barba con toalla caliente.</p>
+                    <div class="accordion-content">
+                        <div class="price-list-grid">
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Corte Clásico / Fade</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$25.000</span>
+                                </div>
+                                <p class="price-desc">Un buen corte de pelo es el mejor accesorio. Incluye lavado y peinado.</p>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Corte Especial / Freestyle</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$30.000</span>
+                                </div>
+                                <p class="price-desc">Corte de precisión con detalle, líneas artísticas y acabado impecable.</p>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Color de Cabello / Barba</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$40.000</span>
+                                </div>
+                                <p class="price-desc">Mejora tu look con este servicio de color permanente o camuflaje de canas.</p>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Corte Infantil (< 12 años)</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$20.000</span>
+                                </div>
+                                <p class="price-desc">Un corte impecable adaptado para los más pequeños con excelente trato.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Perfilado de Barba</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$18.000</span>
+                <!-- CATEGORÍA: BARBA -->
+                <div class="accordion-item" data-category="barba">
+                    <div class="accordion-header">
+                        <div class="accordion-title">💈 Barba</div>
+                        <i class="fa-solid fa-plus accordion-icon"></i>
                     </div>
-                    <p class="price-desc">Nuestro afeitado y diseño exclusivo en tres pasos con aceites hidratantes y navaja de precisión.</p>
+                    <div class="accordion-content">
+                        <div class="price-list-grid">
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Perfilado de Barba</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$18.000</span>
+                                </div>
+                                <p class="price-desc">Nuestro afeitado y diseño exclusivo en tres pasos con aceites hidratantes.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Corte + Recorte de Barba</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$38.000</span>
+                <!-- CATEGORÍA: CUIDADO FACIAL -->
+                <div class="accordion-item" data-category="facial">
+                    <div class="accordion-header">
+                        <div class="accordion-title">✨ Cuidado Facial</div>
+                        <i class="fa-solid fa-plus accordion-icon"></i>
                     </div>
-                    <p class="price-desc">Barba y afeitado, nosotros le damos la diferencia que te hace lucir con clase y elegancia.</p>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Corte Especial / Freestyle</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$30.000</span>
+                    <div class="accordion-content">
+                        <div class="price-list-grid">
+                            <div class="price-item">
+                                <div class="price-row">
+                                    <span class="price-name">Masajeador & Exfoliación</span>
+                                    <span class="price-dots"></span>
+                                    <span class="price-cost">$15.000</span>
+                                </div>
+                                <p class="price-desc">Champú relajante + masaje de cuero cabelludo + toalla caliente para la piel.</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="price-desc">Corte de precisión con detalle, líneas artísticas y acabado impecable en el cuello.</p>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Color de Cabello / Barba</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$40.000</span>
-                    </div>
-                    <p class="price-desc">Mejora tu look con este servicio de color permanente o camuflaje de canas.</p>
-                </div>
-
-                <!-- Item 7 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Champú Masajeador & Exfoliación</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$15.000</span>
-                    </div>
-                    <p class="price-desc">Champú relajante + masaje de cuero cabelludo + toalla caliente para revitalizar tu piel.</p>
-                </div>
-
-                <!-- Item 8 -->
-                <div class="price-item">
-                    <div class="price-row">
-                        <span class="price-name">Corte Infantil (< 12 años)</span>
-                        <span class="price-dots"></span>
-                        <span class="price-cost">$20.000</span>
-                    </div>
-                    <p class="price-desc">Un corte impecable y adaptado para los más pequeños con paciencia y excelente trato.</p>
                 </div>
 
             </div>
@@ -185,8 +235,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPT MENÚ MÓVIL -->
+    <!-- SCRIPT MENÚ MÓVIL Y LÓGICA DE ACORDEONES/FILTROS -->
     <script>
+        // --- 1. Lógica del Menú Móvil ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -204,6 +255,84 @@
                     hamburger.querySelector('i').classList.add('fa-bars');
                     hamburger.querySelector('i').classList.remove('fa-xmark');
                 }
+            });
+        });
+
+        // --- 2. Lógica de Acordeones, Filtros y Búsqueda ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Acordeones (Desplegables)
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            // Abrir el primero ("Combos") por defecto
+            if(accordionHeaders.length > 0) {
+                accordionHeaders[0].parentElement.classList.add('active');
+            }
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Botones de Filtrado
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const category = btn.getAttribute('data-filter');
+
+                    accordionItems.forEach(item => {
+                        if (category === 'todos' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                            if (category !== 'todos') {
+                                item.classList.add('active');
+                            }
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Buscador en tiempo real
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('keyup', (e) => {
+                const searchString = e.target.value.toLowerCase();
+                
+                if(searchString.length > 0) {
+                    document.querySelector('.filter-btn[data-filter="todos"]').click();
+                }
+
+                accordionItems.forEach(accordion => {
+                    const priceItems = accordion.querySelectorAll('.price-item');
+                    let matchesInAccordion = 0;
+
+                    priceItems.forEach(item => {
+                        const name = item.querySelector('.price-name').textContent.toLowerCase();
+                        const desc = item.querySelector('.price-desc').textContent.toLowerCase();
+
+                        if (name.includes(searchString) || desc.includes(searchString)) {
+                            item.style.display = 'block';
+                            matchesInAccordion++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    if (matchesInAccordion > 0) {
+                        accordion.style.display = 'block';
+                        if (searchString !== "") accordion.classList.add('active');
+                    } else {
+                        accordion.style.display = 'none';
+                    }
+                });
             });
         });
     </script>

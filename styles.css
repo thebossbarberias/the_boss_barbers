@@ -692,7 +692,7 @@ footer {
 @media (max-width: 768px) {
     .navbar {
         height: 70px;
-        position: relative; /* Clave para poder centrar el logo exactamente a la mitad */
+        position: relative; 
     }
 
     header {
@@ -702,7 +702,7 @@ footer {
     .logo {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%); /* Centra el logo de forma matemática */
+        transform: translateX(-50%); 
     }
 
     .logo-img {
@@ -713,7 +713,7 @@ footer {
         display: block;
         font-size: 1.5rem;
         color: var(--text-light);
-        margin-left: auto; /* Mantiene el botón hamburguesa pegado a la derecha */
+        margin-left: auto; 
     }
 
     .nav-menu {
@@ -750,87 +750,83 @@ footer {
         width: 100%;
         text-align: center;
     }
+} /* IMPORTANTE: ESTA LLAVE CIERRA EL MODO CELULAR */
 
-       /* ==========================================================================
-   CARTA DE SERVICIOS Y PRECIOS (ESTILO CLÁSICO 2 COLUMNAS + PUNTITOS)
+/* ==========================================================================
+   CARTA DE SERVICIOS Y PRECIOS (ESTILO CLÁSICO 2 COLUMNAS)
    ========================================================================== */
-    .services-hero {
-        height: 55vh;
-        min-height: 400px;
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(18, 18, 18, 1)), 
-                    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* Solución definitiva para que no quede montado sobre el header fijo de 80px */
-        padding-top: 100px; 
-        border-bottom: 1px solid var(--border-color);
-    }
+.services-hero {
+    height: 55vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(18, 18, 18, 1)), 
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px; 
+    border-bottom: 1px solid var(--border-color);
+}
 
+.price-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Fuerza las 2 columnas */
+    gap: 30px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
     .price-list-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Forzamos estrictamente 2 columnas en escritorios */
-        gap: 25px 40px;
-        max-width: 1200px;
-        margin: 0 auto;
+        grid-template-columns: 1fr; /* Pasa a 1 columna en tablets y celulares */
     }
+}
 
-    @media (max-width: 992px) {
-        .price-list-grid {
-            grid-template-columns: 1fr; /* En pantallas medianas o celulares pasa a 1 columna */
-        }
-    }
+.price-item {
+    background-color: transparent; /* Remueve el cuadro de fondo para igualar la imagen */
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color); /* Línea divisoria elegante */
+    transition: var(--transition);
+}
 
-    .price-item {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border-color);
-        padding: 20px 25px;
-        border-radius: 8px;
-        transition: var(--transition);
-    }
+.price-item:hover {
+    transform: translateY(-2px);
+}
 
-    .price-item:hover {
-        border-color: var(--primary);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
+.price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+}
 
-    /* Fila superior de la tarjeta: Nombre ........ Precio */
-    .price-row {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        margin-bottom: 8px;
-    }
+.price-name {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    white-space: nowrap; 
+}
 
-    .price-name {
-        font-family: var(--font-title);
-        font-size: 1.25rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-light);
-        white-space: nowrap; /* Evita que el nombre se rompa feo */
-    }
+/* Puntitos sutiles (puedes borrar la línea 'border-bottom' si prefieres el espacio totalmente vacío como en la foto) */
+.price-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(212, 175, 55, 0.35); 
+    height: 10px;
+}
 
-    /* Los puntitos automáticos clásicos */
-    .price-dots {
-        flex-grow: 1;
-        border-bottom: 2px dotted rgba(212, 175, 55, 0.35); /* Puntitos dorados elegantes */
-        height: 10px;
-    }
+.price-cost {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--primary);
+    font-weight: 700;
+    white-space: nowrap;
+}
 
-    .price-cost {
-        font-family: var(--font-title);
-        font-size: 1.4rem;
-        color: var(--primary);
-        font-weight: 700;
-        white-space: nowrap;
-    }
-
-    .price-desc {
-        color: var(--text-muted);
-        font-size: 0.92rem;
-        line-height: 1.5;
-        margin: 0;
-    }
-    }
+.price-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic; /* Cursiva, idéntico a tu imagen de referencia */
+    margin: 0;
+}

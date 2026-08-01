@@ -905,6 +905,9 @@ footer {
 /* ==========================================================================
    RESPONSIVE DESIGN (MEDIA QUERIES - MENÚ MÓVIL CORREGIDO)
    ========================================================================== */
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES - MENÚ MÓVIL CORREGIDO AL 100%)
+   ========================================================================== */
 @media (max-width: 1024px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -930,26 +933,37 @@ footer {
         height: 70px;
         position: relative;
         padding: 0 15px; 
+        justify-content: center; /* Ayuda a centrar el logo de base */
     }
 
     .logo {
         position: absolute;
         left: 50%;
         transform: translateX(-50%); 
+        z-index: 1001; /* Mantiene el logo siempre visible */
     }
 
     .logo-img {
         height: 48px;
     }
 
+    /* CORRECCIÓN 1: Anclamos la hamburguesa firmemente a la derecha */
     .hamburger {
         display: block;
-        font-size: 1.5rem;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.8rem;
         color: var(--text-light);
-        margin-left: auto; 
+        background: none;
+        border: none;
+        padding: 5px; /* Área táctil un poco más grande */
+        z-index: 1002; /* Por encima de todo */
+        cursor: pointer;
     }
 
-    /* Menú móvil optimizado con transform para evitar el desplazamiento lateral negro */
+    /* CORRECCIÓN 2: Centrado perfecto eliminando padding de listas */
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -962,6 +976,8 @@ footer {
         justify-content: center;
         align-items: center;
         gap: 35px;
+        padding: 0; /* Quita el espacio invisible que descentraba el texto */
+        margin: 0;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
         z-index: 999;
@@ -969,6 +985,12 @@ footer {
 
     .nav-menu.active {
         transform: translateX(0);
+    }
+
+    /* Aseguramos que los enlaces ocupen todo el ancho y se centren */
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
     }
 
     .hero-title {

@@ -1,28 +1,29 @@
 /* ==========================================================================
-   VARIABLES & RESET (ESTILO LUJO MINIMALISTA - BASADO EN LOGO)
+   VARIABLES & RESET (ESTILO MONOCROMÁTICO + ACENTOS DE BARBERÍA)
    ========================================================================== */
 :root {
-    --primary: #EAE5D9;        /* Marfil base del logo */
-    --primary-glow: rgba(234, 229, 217, 0.12); /* Brillo ambiental elegante */
-    --bg-dark: #070707;        /* Negro absoluto profundo */
-    --bg-card: #111111;        /* Fondo base de tarjetas */
-    --bg-surface: #191919;     /* Superficie con relieve */
-    --text-light: #F4F1EA;     
-    --text-muted: #A09E98;     /* Gris con un toque cálido, no frío */
-    --border-color: #262626;   
-    --border-glow: rgba(234, 229, 217, 0.3); /* Bordes iluminados sutiles */
+    --primary: #FFFFFF;        /* Blanco puro principal */
+    --barber-red: #FF3333;     /* Rojo clásico de barbería */
+    --barber-blue: #0066FF;    /* Azul clásico de barbería */
+    --primary-glow: rgba(255, 255, 255, 0.15); 
+    --bg-dark: #000000;        /* Negro absoluto profundo */
+    --bg-card: #0A0A0A;        /* Fondo base de tarjetas */
+    --bg-surface: #141414;     /* Superficie con relieve */
+    --text-light: #FFFFFF;     
+    --text-muted: #A0A0A0;     /* Gris neutro legible */
+    --border-color: #222222;   
+    --border-glow: rgba(255, 255, 255, 0.25); 
     --font-title: 'Oswald', sans-serif;
     --font-body: 'Montserrat', sans-serif;
     --transition: all 0.3s ease;
 }
 
-/* Fondo general con sutil viñeta para dar profundidad y evitar desbordes */
 html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden !important;
     position: relative;
-    background: radial-gradient(circle at 50% 0%, #161616 0%, var(--bg-dark) 70%);
+    background: var(--bg-dark);
     color: var(--text-light);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -42,32 +43,31 @@ img {
     display: block;
 }
 
-/* Botón principal con brillo y efecto de lujo */
+/* Botón principal limpio en Blanco y Negro */
 .btn-primary {
-    background: linear-gradient(135deg, #F4F1EA 0%, #D8D2C4 100%);
+    background: #FFFFFF;
     color: #000000;
     font-weight: 700;
-    box-shadow: 0 4px 20px rgba(234, 229, 217, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover {
-    background: #FFFFFF;
+    background: #E0E0E0;
     transform: translateY(-3px);
-    box-shadow: 0 6px 25px var(--border-glow);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
 }
 
-/* Tarjetas con profundidad y borde iluminado al pasar el cursor */
+/* Tarjetas con estructura fija y bordes limpios */
 .service-card, .feature-card, .barber-card {
-    background: linear-gradient(145deg, #131313, #0D0D0D);
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     transition: var(--transition);
 }
 
 .service-card:hover, .feature-card:hover, .barber-card:hover {
-    border-color: var(--border-glow);
+    border-color: var(--primary);
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 15px var(--primary-glow);
 }
 
 /* ==========================================================================
@@ -132,12 +132,6 @@ img {
     transform: translateY(-3px);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
 .logo-img {
     height: 75px;
     width: auto;
@@ -152,7 +146,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
@@ -167,10 +161,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.logo span {
-    color: var(--primary);
+    height: 80px;
 }
 
 .nav-menu {
@@ -188,7 +179,7 @@ header {
 }
 
 .nav-link:hover {
-    color: var(--primary);
+    color: var(--barber-red);
 }
 
 .hamburger {
@@ -206,7 +197,7 @@ header {
 .hero {
     height: 100vh;
     min-height: 650px;
-    background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
                 url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -222,7 +213,7 @@ header {
 
 .hero-badge {
     display: inline-block;
-    background-color: rgba(234, 229, 217, 0.08);
+    background-color: rgba(255, 255, 255, 0.08);
     color: var(--primary);
     border: 1px solid var(--primary);
     padding: 6px 16px;
@@ -232,6 +223,10 @@ header {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
+}
+
+.hero-badge i {
+    color: var(--barber-red);
 }
 
 .hero-title {
@@ -244,7 +239,7 @@ header {
 }
 
 .hero-title span {
-    color: var(--primary);
+    color: var(--barber-red);
 }
 
 .hero-description {
@@ -261,7 +256,7 @@ header {
 }
 
 /* ==========================================================================
-   BENEFICIOS / CARACTERÍSTICAS (4 EN UN SOLO RENGLÓN EN ESCRITORIO)
+   BENEFICIOS / CARACTERÍSTICAS
    ========================================================================== */
 .features {
     background-color: var(--bg-card);
@@ -283,14 +278,9 @@ header {
     transition: var(--transition);
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-}
-
 .feature-icon {
     font-size: 2.5rem;
-    color: var(--primary);
+    color: var(--barber-blue);
     margin-bottom: 20px;
 }
 
@@ -304,74 +294,6 @@ header {
 .feature-text {
     color: var(--text-muted);
     font-size: 0.9rem;
-}
-
-/* ==========================================================================
-   SERVICIOS & PRECIOS (TARJETAS)
-   ========================================================================== */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.service-card {
-    background-color: var(--bg-card);
-    border-radius: 8px;
-    padding: 30px;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-}
-
-.service-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-}
-
-.service-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 15px;
-    border-bottom: 1px dashed var(--border-color);
-    padding-bottom: 15px;
-}
-
-.service-name {
-    font-family: var(--font-title);
-    font-size: 1.4rem;
-    text-transform: uppercase;
-}
-
-.service-price {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.service-info {
-    display: flex;
-    gap: 15px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-}
-
-.service-info i {
-    color: var(--primary);
-}
-
-.service-description {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-    flex-grow: 1;
 }
 
 /* ==========================================================================
@@ -395,21 +317,12 @@ header {
     transition: var(--transition);
 }
 
-.barber-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
-}
-
 .barber-img {
     height: 320px;
     width: 100%;
     object-fit: cover;
     cursor: pointer;
     transition: opacity 0.2s ease;
-}
-
-.barber-img:hover {
-    opacity: 0.85;
 }
 
 .barber-info {
@@ -425,7 +338,7 @@ header {
 }
 
 .barber-role {
-    color: var(--primary);
+    color: var(--barber-blue);
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -440,12 +353,10 @@ header {
 }
 
 /* ==========================================================================
-   AGENDAMIENTO EN FRESHA (CTA SECCIÓN)
+   FRESHA BANNER
    ========================================================================== */
 .fresha-banner {
-    background: linear-gradient(135deg, rgba(234, 229, 217, 0.05) 0%, rgba(10, 10, 10, 1) 100%),
-                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1600') center/cover;
-    background-blend-mode: overlay;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 10, 1) 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     text-align: center;
@@ -454,10 +365,10 @@ header {
 .fresha-box {
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba(20, 20, 20, 0.95);
+    background-color: var(--bg-card);
     padding: 50px 30px;
     border-radius: 12px;
-    border: 2px solid var(--primary);
+    border: 2px solid var(--barber-red);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
 }
 
@@ -468,15 +379,11 @@ header {
     margin: 35px 0;
 }
 
-.fresha-step {
-    padding: 15px;
-}
-
 .step-number {
     width: 40px;
     height: 40px;
-    background-color: var(--primary);
-    color: #000000;
+    background-color: var(--barber-red);
+    color: #FFFFFF;
     font-family: var(--font-title);
     font-weight: 700;
     border-radius: 50%;
@@ -496,12 +403,6 @@ header {
     gap: 40px;
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
 .contact-item {
     display: flex;
     align-items: flex-start;
@@ -512,12 +413,12 @@ header {
     width: 50px;
     height: 50px;
     background-color: var(--bg-card);
-    border: 1px solid var(--primary);
+    border: 1px solid var(--barber-blue);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: var(--barber-blue);
     font-size: 1.3rem;
     flex-shrink: 0;
 }
@@ -552,7 +453,7 @@ header {
    FOOTER
    ========================================================================== */
 footer {
-    background-color: #050505;
+    background-color: #000000;
     padding: 40px 0 20px 0;
     border-top: 1px solid var(--border-color);
     text-align: center;
@@ -579,8 +480,8 @@ footer {
 }
 
 .social-icon:hover {
-    background-color: var(--primary);
-    color: #000000;
+    background-color: var(--barber-blue);
+    color: #FFFFFF;
     transform: translateY(-3px);
 }
 
@@ -590,12 +491,12 @@ footer {
 }
 
 /* ==========================================================================
-   CARTA DE SERVICIOS Y PRECIOS (ESTILO CLÁSICO 2 COLUMNAS)
+   CARTA DE SERVICIOS Y PRECIOS (ESTILO CLÁSICO 2 COLUMNAS ROJO/AZUL)
    ========================================================================== */
 .services-hero {
     height: 55vh;
     min-height: 400px;
-    background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 1)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 1)), 
                 url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -619,10 +520,6 @@ footer {
     transition: var(--transition);
 }
 
-.price-item:hover {
-    transform: translateY(-2px);
-}
-
 .price-row {
     display: flex;
     align-items: baseline;
@@ -641,14 +538,14 @@ footer {
 
 .price-dots {
     flex-grow: 1;
-    border-bottom: 1px dotted rgba(234, 229, 217, 0.25); 
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2); 
     height: 10px;
 }
 
 .price-cost {
     font-family: var(--font-title);
     font-size: 1.4rem;
-    color: var(--primary);
+    color: var(--barber-red); /* Acento rojo en precios del menú de servicios */
     font-weight: 700;
     white-space: nowrap;
 }
@@ -662,7 +559,7 @@ footer {
 }
 
 /* ==========================================================================
-   BUSCADOR, FILTROS Y ACORDEONES DE SERVICIOS
+   BUSCADOR, FILTROS Y ACORDEONES CON TEMÁTICA DE BARBERÍA
    ========================================================================== */
 .services-tools {
     display: flex;
@@ -702,8 +599,8 @@ footer {
 
 .search-box input:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 10px rgba(234, 229, 217, 0.15);
+    border-color: var(--barber-blue);
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.2);
 }
 
 .filter-buttons {
@@ -728,13 +625,13 @@ footer {
 }
 
 .filter-btn:hover {
-    border-color: var(--primary);
+    border-color: var(--barber-red);
 }
 
 .filter-btn.active {
-    background-color: var(--primary);
-    color: #000000;
-    border-color: var(--primary);
+    background-color: var(--barber-blue);
+    color: #FFFFFF;
+    border-color: var(--barber-blue);
     font-weight: 600;
 }
 
@@ -763,10 +660,11 @@ footer {
     background-color: var(--bg-surface);
     transition: var(--transition);
     user-select: none;
+    border-left: 4px solid var(--barber-red); /* Detalle de color barbería en acordeones */
 }
 
 .accordion-header:hover {
-    background-color: rgba(234, 229, 217, 0.03);
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .accordion-title {
@@ -777,7 +675,7 @@ footer {
 }
 
 .accordion-icon {
-    color: var(--primary);
+    color: var(--barber-blue);
     font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
@@ -794,14 +692,16 @@ footer {
 
 .accordion-item.active .accordion-icon {
     transform: rotate(45deg);
+    color: var(--barber-red);
 }
 
 .accordion-item.active .accordion-header {
     border-bottom: 1px solid var(--border-color);
+    border-left-color: var(--barber-blue);
 }
 
 /* ==========================================================================
-   ESTILOS DE LA VENTANA MODAL ESTILO GALERÍA (FACEBOOK VIEWER)
+   MODAL GALERÍA Y RESPONSIVE
    ========================================================================== */
 .modal-galeria {
     display: none;
@@ -827,12 +727,6 @@ footer {
     width: 100%;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0,0,0,0.85);
-    animation: modalFadeIn 0.3s ease;
-}
-
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
 }
 
 .modal-img-pane {
@@ -872,16 +766,16 @@ footer {
 }
 
 .cerrar-modal:hover {
-    color: var(--primary);
+    color: var(--barber-red);
 }
 
 .modal-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(10, 10, 10, 0.85);
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: var(--barber-blue);
+    border: 1px solid var(--barber-blue);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -895,162 +789,66 @@ footer {
 }
 
 .modal-nav:hover {
-    background-color: var(--primary);
-    color: #000000;
+    background-color: var(--barber-blue);
+    color: #FFFFFF;
 }
 
 .modal-prev { left: 20px; }
 .modal-next { right: 20px; }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (MEDIA QUERIES - MENÚ MÓVIL CORREGIDO)
-   ========================================================================== */
-/* ==========================================================================
-   RESPONSIVE DESIGN (MEDIA QUERIES - MENÚ MÓVIL CORREGIDO AL 100%)
-   ========================================================================== */
 @media (max-width: 1024px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .price-list-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 992px) {
     .price-list-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    header {
-        height: 70px;
-    }
-
     .navbar {
         height: 70px;
         position: relative;
-        padding: 0 15px; 
-        justify-content: center; /* Ayuda a centrar el logo de base */
+        justify-content: center;
     }
-
     .logo {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%); 
-        z-index: 1001; /* Mantiene el logo siempre visible */
+        transform: translateX(-50%);
+        z-index: 1001;
     }
-
-    .logo-img {
-        height: 48px;
-    }
-
-    /* CORRECCIÓN 1: Anclamos la hamburguesa firmemente a la derecha */
     .hamburger {
         display: block;
         position: absolute;
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 1.8rem;
-        color: var(--text-light);
-        background: none;
-        border: none;
-        padding: 5px; /* Área táctil un poco más grande */
-        z-index: 1002; /* Por encima de todo */
-        cursor: pointer;
+        z-index: 1002;
     }
-
-    /* CORRECCIÓN 2: Centrado perfecto eliminando padding de listas */
     .nav-menu {
         position: fixed;
         top: 70px;
         left: 0;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: rgba(7, 7, 7, 0.98);
-        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.98);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 35px;
-        padding: 0; /* Quita el espacio invisible que descentraba el texto */
-        margin: 0;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
         z-index: 999;
     }
-
     .nav-menu.active {
         transform: translateX(0);
     }
-
-    /* Aseguramos que los enlaces ocupen todo el ancho y se centren */
-    .nav-menu li {
-        width: 100%;
-        text-align: center;
-    }
-
     .hero-title {
         font-size: 2.3rem;
     }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-
     .modal-dialog-box {
         flex-direction: column;
         max-height: 85vh;
         overflow-y: auto;
-    }
-    
-    .modal-img-pane {
-        min-height: 280px;
-    }
-    
-    .modal-text-pane {
-        padding: 25px;
-    }
-    
-    .modal-prev { left: 10px; }
-    .modal-next { right: 10px; }
-}
-
-@media (max-width: 576px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .price-row {
-        gap: 5px;
-    }
-    
-    .price-name {
-        font-size: 1.1rem;
-        white-space: normal;
-        line-height: 1.3;
-    }
-    
-    .price-cost {
-        font-size: 1.2rem;
-    }
-
-    .accordion-content {
-        padding: 20px 15px;
     }
 }

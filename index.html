@@ -101,7 +101,7 @@
                 <div class="barber-card">
                     <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img" title="Haz clic para ver galería">
                     <div class="barber-info">
-                        <h3 class="barber-name">Nicolás Acevedo </h3>
+                        <h3 class="barber-name">Nicolás Acevedo</h3>
                         <p class="barber-role">Especialista en Desvanecidos, Fades, Diseños & Freestyle</p>
                         <p class="barber-bio">Más de 12 años de experiencia. Maestro en degradados pulidos y arreglos de barba de alta precisión.</p>
                         <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con Makakikuz</a>
@@ -114,7 +114,7 @@
                     <div class="barber-info">
                         <h3 class="barber-name">Leonardo Nossa</h3>
                         <p class="barber-role">Especialista en Asesoría de Imagen, Barbería Profesional</p>
-                        <p class="barber-bio">Barbero reconocido a nivel nacional por sus cortes modernos y tradicionales,  estilos ejecutivos y tratamiento especializado del cabello.</p>
+                        <p class="barber-bio">Barbero reconocido a nivel nacional por sus cortes modernos y tradicionales, estilos ejecutivos y tratamiento especializado del cabello.</p>
                         <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Reservar con LEONISA</a>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <!-- VENTANA MODAL ESTILO GALERÍA (FACEBOOK VIEWER) -->
+    <!-- VENTANA MODAL ESTILO GALERÍA -->
     <div id="modalGaleria" class="modal-galeria">
         <span class="cerrar-modal" id="cerrarModal">&times;</span>
         <button class="modal-nav modal-prev" id="prevModal"><i class="fa-solid fa-chevron-left"></i></button>
@@ -134,7 +134,7 @@
             </div>
             <div class="modal-text-pane">
                 <h3 id="modalName" style="color: var(--primary); font-family: var(--font-title); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 5px;"></h3>
-                <p id="modalRole" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;"></p>
+                <p id="modalRole" style="color: var(--barber-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;"></p>
                 <p id="modalBio" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;"></p>
                 <a id="modalBtn" href="" target="_blank" class="btn btn-primary" style="padding: 12px 24px; text-align: center;">Reservar Cita</a>
             </div>
@@ -235,7 +235,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Menú móvil responsivo
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -256,7 +255,6 @@
             });
         });
 
-        // Lógica de la Galería Modal tipo Facebook para los Barberos
         const barberCards = document.querySelectorAll('.barber-card');
         const modal = document.getElementById('modalGaleria');
         const cerrarModal = document.getElementById('cerrarModal');
@@ -315,32 +313,6 @@
                 modal.style.display = 'none';
             }
         });
-        /* ==========================================================================
-        NAVEGACIÓN POR TECLADO PARA LA MODAL DE BARBEROS
-        ========================================================================== */
-        document.addEventListener('keydown', function(event) {
-            const modal = document.querySelector('.modal-galeria');
-            
-            if (modal && (modal.style.display === 'flex' || window.getComputedStyle(modal).display === 'flex')) {
-                
-                if (event.key === 'ArrowLeft') {
-                    
-                    const btnPrev = document.querySelector('.modal-prev');
-                    if (btnPrev) btnPrev.click();
-                } 
-                else if (event.key === 'ArrowRight') {
-                   
-                    const btnNext = document.querySelector('.modal-next');
-                    if (btnNext) btnNext.click();
-                } 
-                else if (event.key === 'Escape') {
-                    
-                    const btnClose = document.querySelector('.cerrar-modal');
-                    if (btnClose) btnClose.click();
-                }
-            }
-        });
     </script>
-    
 </body>
 </html>

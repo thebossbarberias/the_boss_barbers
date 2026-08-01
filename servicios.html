@@ -23,7 +23,7 @@
             </a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="servicios.html" class="nav-link" style="color: var(--primary);">Servicios</a></li>
+                <li><a href="servicios.html" class="nav-link" style="color: var(--barber-red);">Servicios</a></li>
                 <li><a href="index.html#barberos" class="nav-link">Barberos</a></li>
                 <li><a href="index.html#contacto" class="nav-link">Ubicación</a></li>
                 <li><a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Agendar Cita</a></li>
@@ -37,8 +37,8 @@
     <!-- HERO SECCIÓN DE SERVICIOS -->
     <section class="services-hero">
         <div class="container text-center">
-            <span class="hero-badge"><i class="fa-solid fa-scissors"></i> Calidad & Estilo</span>
-            <h1 class="hero-title">Nuestros Servicios <span>& Precios</span></h1>
+            <span class="hero-badge"><i class="fa-solid fa-scissors" style="color: var(--barber-red);"></i> Calidad & Estilo</span>
+            <h1 class="hero-title">Nuestros Servicios <span style="color: var(--barber-red);">& Precios</span></h1>
             <p class="hero-description">Obtén una gama completa de servicios premium diseñados exclusivamente para el cuidado masculino.</p>
             <div style="margin-top: 25px;">
                 <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-primary">
@@ -80,7 +80,6 @@
                         <i class="fa-solid fa-plus accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <!-- Mantenemos el grid de 2 columnas aquí adentro -->
                         <div class="price-list-grid">
                             <div class="price-item">
                                 <div class="price-row">
@@ -136,7 +135,7 @@
                             </div>
                             <div class="price-item">
                                 <div class="price-row">
-                                    <span class="price-name">Corte Infantil (< 12 años)</span>
+                                    <span class="price-name">Corte Infantil (&lt; 12 años)</span>
                                     <span class="price-dots"></span>
                                     <span class="price-cost">$20.000</span>
                                 </div>
@@ -196,32 +195,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE EXPERIENCIA / CATEGORÍAS VISUALES -->
-    <section class="section-padding" style="background-color: var(--bg-card); border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <h2 class="section-title text-center">Ofrecemos servicios de primera clase</h2>
-            <p class="section-subtitle text-center">Cada detalle está pensado para ofrecerte una experiencia de verdadero lujo.</p>
-
-            <div class="features-grid" style="margin-top: 40px;">
-                <div class="feature-card">
-                    <i class="fa-solid fa-hand-holding-droplet feature-icon"></i>
-                    <h3 class="feature-title">Hidratación & Cuidado</h3>
-                    <p class="feature-text">Tratamientos capilares y faciales con productos importados libres de parabenos.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-fire-flame-curved feature-icon"></i>
-                    <h3 class="feature-title">Toallas Calientes</h3>
-                    <p class="feature-text">Ritual tradicional de vapor y esencias para relajar los poros antes del afeitado.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-mug-hot feature-icon"></i>
-                    <h3 class="feature-title">Bar & Bebidas</h3>
-                    <p class="feature-text">Disfruta de café de especialidad o una bebida fría de cortesía durante tu atención.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -235,9 +208,8 @@
         </div>
     </footer>
 
-    <!-- SCRIPT MENÚ MÓVIL Y LÓGICA DE ACORDEONES/FILTROS -->
+    <!-- SCRIPT -->
     <script>
-        // --- 1. Lógica del Menú Móvil ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -258,12 +230,9 @@
             });
         });
 
-        // --- 2. Lógica de Acordeones, Filtros y Búsqueda ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Acordeones (Desplegables)
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             
-            // Abrir el primero ("Combos") por defecto
             if(accordionHeaders.length > 0) {
                 accordionHeaders[0].parentElement.classList.add('active');
             }
@@ -275,7 +244,6 @@
                 });
             });
 
-            // Botones de Filtrado
             const filterBtns = document.querySelectorAll('.filter-btn');
             const accordionItems = document.querySelectorAll('.accordion-item');
 
@@ -300,7 +268,6 @@
                 });
             });
 
-            // Buscador en tiempo real
             const searchInput = document.getElementById('searchInput');
             
             searchInput.addEventListener('keyup', (e) => {

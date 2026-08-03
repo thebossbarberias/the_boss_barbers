@@ -28,8 +28,10 @@
                 <li><a href="#contacto" class="nav-link">Ubicación</a></li>
                 <li><a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Agendar Cita</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <i class="fa-solid fa-bars"></i>
+            <div class="hamburger" id="hamburger" aria-label="Abrir menú" role="button" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
@@ -240,18 +242,16 @@
         const navLinks = document.querySelectorAll('.nav-link');
 
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.querySelector('i').classList.toggle('fa-bars');
-            hamburger.querySelector('i').classList.toggle('fa-xmark');
+            const isOpen = navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                if (hamburger.querySelector('i').classList.contains('fa-xmark')) {
-                    hamburger.querySelector('i').classList.add('fa-bars');
-                    hamburger.querySelector('i').classList.remove('fa-xmark');
-                }
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
 

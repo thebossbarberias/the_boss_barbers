@@ -2,20 +2,23 @@
    VARIABLES & RESET (ESTILO MONOCROMÁTICO + ACENTOS DE BARBERÍA)
    ========================================================================== */
 :root {
-    --primary: #FFFFFF;        /* Blanco puro principal */
-    --barber-red: #FF3333;     /* Rojo clásico de barbería */
-    --barber-blue: #0066FF;    /* Azul clásico de barbería */
-    --primary-glow: rgba(255, 255, 255, 0.15); 
-    --bg-dark: #000000;        /* Negro absoluto profundo */
-    --bg-card: #0A0A0A;        /* Fondo base de tarjetas */
-    --bg-surface: #141414;     /* Superficie con relieve */
-    --text-light: #FFFFFF;     
-    --text-muted: #A0A0A0;     /* Gris neutro legible */
-    --border-color: #222222;   
-    --border-glow: rgba(255, 255, 255, 0.25); 
+    --primary: #F4EDE0;               /* Blanco cálido (marfil), no blanco puro */
+    --gold: #C9A24B;                  /* Dorado navaja clásica: acento cálido de profundidad */
+    --gold-light: #E4C77D;
+    --barber-red: #D62839;            /* Rojo clásico de barbería, algo más profundo */
+    --barber-blue: #1E5FAE;           /* Azul clásico de barbería, algo más profundo */
+    --primary-glow: rgba(201, 162, 75, 0.18);
+    --bg-dark: #09090B;                /* Negro con leve calidez, no negro absoluto */
+    --bg-card: #131215;                /* Fondo base de tarjetas */
+    --bg-surface: #1B191D;             /* Superficie con relieve */
+    --text-light: #F4EDE0;
+    --text-muted: #9C9690;             /* Gris cálido legible */
+    --border-color: #262329;
+    --border-glow: rgba(201, 162, 75, 0.35);
     --font-title: 'Oswald', sans-serif;
     --font-body: 'Montserrat', sans-serif;
     --transition: all 0.3s ease;
+    --pole-stripe: linear-gradient(115deg, var(--barber-red) 0 12.5%, var(--primary) 12.5% 25%, var(--barber-blue) 25% 37.5%, var(--primary) 37.5% 50%, var(--barber-red) 50% 62.5%, var(--primary) 62.5% 75%, var(--barber-blue) 75% 87.5%, var(--primary) 87.5% 100%);
 }
 
 html, body {
@@ -43,31 +46,32 @@ img {
     display: block;
 }
 
-/* Botón principal limpio en Blanco y Negro */
+/* Botón principal con degradado dorado: da profundidad en vez de blanco/negro plano */
 .btn-primary {
-    background: #FFFFFF;
-    color: #000000;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, #9c7a2e 100%);
+    color: #171310;
     font-weight: 700;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(201, 162, 75, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .btn-primary:hover {
-    background: #E0E0E0;
+    background: linear-gradient(135deg, #EED89A 0%, var(--gold-light) 55%, var(--gold) 100%);
     transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 28px rgba(201, 162, 75, 0.4), inset 0 1px 0 rgba(255,255,255,0.35);
 }
 
-/* Tarjetas con estructura fija y bordes limpios */
+/* Tarjetas con degradado sutil de superficie y borde con brillo al pasar el mouse */
 .service-card, .feature-card, .barber-card {
-    background: var(--bg-card);
+    background: linear-gradient(160deg, var(--bg-surface) 0%, var(--bg-card) 100%);
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     transition: var(--transition);
 }
 
 .service-card:hover, .feature-card:hover, .barber-card:hover {
-    border-color: var(--primary);
+    border-color: var(--gold);
     transform: translateY(-5px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--border-glow);
 }
 
 /* ==========================================================================
@@ -90,12 +94,29 @@ img {
 
 .section-title {
     font-family: var(--font-title);
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 18px;
 }
+
+/* Firma visual: mini poste de barbería girado, como acento de marca bajo cada título */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--pole-stripe);
+    background-size: 200% 100%;
+}
+
 
 .section-subtitle {
     color: var(--text-muted);
@@ -123,13 +144,15 @@ img {
 .btn-outline {
     background-color: transparent;
     color: var(--text-light);
-    border-color: var(--primary);
+    border-color: var(--gold);
 }
 
 .btn-outline:hover {
-    background-color: var(--primary);
-    color: #000000;
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #171310;
     transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(201, 162, 75, 0.3);
 }
 
 .logo-img {
@@ -146,10 +169,11 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(9, 9, 11, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 0 var(--border-glow);
     transition: var(--transition);
 }
 
@@ -179,16 +203,48 @@ header {
 }
 
 .nav-link:hover {
-    color: var(--barber-red);
+    color: var(--gold);
 }
 
+/* Ícono de hamburguesa 100% CSS (3 líneas), independiente de Font Awesome:
+   así nunca desaparece por una fuente externa que no cargó a tiempo */
 .hamburger {
     display: none;
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-light);
+    width: 28px;
+    height: 20px;
     background: none;
     border: none;
+    padding: 0;
+    position: relative;
+}
+
+.hamburger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--text-light);
+    transition: var(--transition);
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.active span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+    background-color: var(--gold);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
+    background-color: var(--gold);
 }
 
 /* ==========================================================================
@@ -196,8 +252,9 @@ header {
    ========================================================================== */
 .hero {
     height: 100vh;
-    min-height: 650px;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
+    min-height: 560px;
+    background: linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.88) 55%, rgba(9,9,11,0.97) 100%),
+                radial-gradient(ellipse at 50% 30%, rgba(201,162,75,0.12) 0%, transparent 60%),
                 url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -231,9 +288,9 @@ header {
 
 .hero-title {
     font-family: var(--font-title);
-    font-size: 3.8rem;
+    font-size: clamp(2.1rem, 6.5vw, 3.8rem);
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
@@ -805,7 +862,8 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+/* Tablets: la navbar completa (todos los links) ya no cabe cómodamente */
+@media (max-width: 900px) {
     .navbar {
         height: 70px;
         position: relative;
@@ -817,10 +875,14 @@ footer {
         transform: translateX(-50%);
         z-index: 1001;
     }
+    .logo-img {
+        height: 55px;
+    }
+    /* Hamburguesa en la esquina SUPERIOR IZQUIERDA, como se pidió */
     .hamburger {
         display: block;
         position: absolute;
-        right: 20px;
+        left: 20px;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1002;
@@ -831,24 +893,120 @@ footer {
         left: 0;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: rgba(0, 0, 0, 0.98);
+        background-color: rgba(9, 9, 11, 0.98);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 35px;
+        gap: 30px;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
         z-index: 999;
+        overflow-y: auto;
+        padding: 30px 0;
     }
     .nav-menu.active {
         transform: translateX(0);
     }
-    .hero-title {
-        font-size: 2.3rem;
+    .contact-grid,
+    .barbers-grid {
+        gap: 25px;
     }
+    .fresha-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
     .modal-dialog-box {
         flex-direction: column;
         max-height: 85vh;
         overflow-y: auto;
+    }
+    .modal-img-pane {
+        min-height: 260px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .map-container iframe {
+        min-height: 260px;
+    }
+}
+
+/* Celulares medianos (la mayoría de smartphones) */
+@media (max-width: 576px) {
+    .section-padding {
+        padding: 55px 0;
+    }
+    .container {
+        width: 92%;
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .price-row {
+        flex-wrap: wrap;
+    }
+    .price-name {
+        white-space: normal;
+    }
+    .price-dots {
+        display: none;
+    }
+    .services-tools {
+        gap: 14px;
+    }
+    .filter-buttons {
+        gap: 8px;
+    }
+    .filter-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    .fresha-box {
+        padding: 35px 20px;
+    }
+    .fresha-steps {
+        grid-template-columns: 1fr;
+    }
+    .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+}
+
+/* Celulares pequeños */
+@media (max-width: 400px) {
+    .navbar {
+        padding: 0 12px;
+    }
+    .logo-img {
+        height: 46px;
+    }
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+    .section-title {
+        letter-spacing: 1px;
+    }
+    .btn {
+        padding: 12px 22px;
+        font-size: 1rem;
     }
 }

@@ -268,8 +268,8 @@ header {
 .hero {
     min-height: 100vh;
     min-height: 100dvh;
-    background: linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.88) 55%, rgba(9,9,11,0.97) 100%),
-                radial-gradient(ellipse at 50% 30%, rgba(201,162,75,0.12) 0%, transparent 60%),
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.45) 0%, rgba(10, 10, 12, 0.65) 60%, rgba(10, 10, 12, 0.90) 100%),
+                radial-gradient(ellipse at 50% 30%, rgba(201, 162, 75, 0.15) 0%, transparent 65%),
                 url('https://images.fresha.com/locations/location-profile-images/3057508/6476795/e6275e87-a70d-47a8-bcd4-6c439dc3fccd-TheBossBarbers-CO-Bogot-Bogot-SubaPradoNorte-Fresha.jpg?class=gallery-modal-large&watermark=true&f_width=1920&f_quality=75') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -340,12 +340,16 @@ header {
 }
 
 .hero-description {
+    color: #FFFFFF !important; /* Blanco puro para máximo contraste */
     font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-bottom: 30px;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
+    font-weight: 500;
+    max-width: 720px;
+    margin: 0 auto 30px auto;
+    /* Sombra de texto profunda que aisla la letra del fondo de la foto */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 4px 12px rgba(0, 0, 0, 0.9),
+        0 0 18px rgba(0, 0, 0, 0.85);
 }
 
 .hero-buttons {
@@ -405,10 +409,24 @@ header {
 /* ==========================================================================
    BARBEROS / EQUIPO
    ========================================================================== */
-barbers {
-    background-color: var(--bg-card);
+.barbers {
+    background: var(--bg-dark);
+    padding: 45px 0; /* Padding reducido para que quepa en una sola pantalla */
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
+.barbers .section-title {
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.barbers .section-subtitle,
+#barberos p {
+    color: var(--text-muted);
+    margin-bottom: 30px; /* Espaciado ajustado */
+    font-size: 0.9rem;
+}
 .barbers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -416,72 +434,93 @@ barbers {
 }
 
 .barber-card {
-    background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+    background: #FFFFFF; /* Tarjeta blanca de alto nivel */
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid var(--border-color);
-    transition: all 0.4s ease;
+    border: 1px solid rgba(201, 162, 75, 0.5); /* Borde fino en dorado */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
+    
 }
 
-/* Efecto de elevación e interactividad al pasar el mouse */
-.barber-card:hover {
+.barber-card .btn-outline {
+    border: 1px solid #0A0A0C;
+    color: #0A0A0C;
+    background-color: transparent;
+    width: 100%;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.barber-card:hover .btn-outline {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    color: #0A0A0C;
     border-color: var(--gold);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(201, 162, 75, 0.15);
+    box-shadow: 0 4px 12px rgba(201, 162, 75, 0.3);
+}
+
+.barber-card:hover {
+    transform: translateY(-10px) scale(1.01);
+    border-color: var(--gold);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.22), 0 0 20px rgba(201, 162, 75, 0.25);
 }
 
 .barber-img {
-    height: 240px;
+    height: 190px; /* Reducido de 260px a 190px para optimizar el espacio vertical */
     width: 100%;
     object-fit: cover;
     object-position: top;
     cursor: pointer;
-    transition: transform 0.6s ease, filter 0.6s ease;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #EAEAEA;
+    transition: transform 0.5s ease;
 }
 
 /* Zoom elegante en la foto al pasar el mouse por la tarjeta */
 .barber-card:hover .barber-img {
-    transform: scale(1.06); 
+    transform: scale(1.04);
+    filter: brightness(1.05);
     border-bottom-color: var(--gold);
 }
 
 .barber-info {
-    padding: 30px 25px;
+    padding: 20px 18px;
     text-align: center;
     position: relative;
     z-index: 2; /* Evita que la foto pise el texto al hacer zoom */
-    background: inherit;
+    background: #FFFFFF;
 }
 
 .barber-name {
     font-family: var(--font-title);
-    font-size: 1.25rem; /* Un poco más pequeño y fino */
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-    color: #FFFFFF;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+    color: #0A0A0C;
+    text-shadow: none;
 }
 
 .barber-role {
-    color: var(--gold); /* Reemplazamos el azul por el dorado de la marca */
-    font-family: var(--font-body);
-    font-size: 0.75rem; /* Más pequeño para mayor delicadeza */
-    font-weight: 500;
+    color: #9E7B2F; /* Dorado sobrio visible sobre fondo blanco */
+    font-size: 0.72rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2.5px; /* Espaciado estilo "alta costura" */
-    margin-bottom: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
     display: block;
 }
 
 .barber-bio {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.7;
-    margin-bottom: 22px;
-    font-weight: 300; /* Letra más delgada y limpia */
+    color: #4A4A4A; /* Gris oscuro elegante */
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    font-weight: 400;
 }
 
 /* ==========================================================================

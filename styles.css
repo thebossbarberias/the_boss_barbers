@@ -472,7 +472,7 @@ header {
     background-color: var(--bg-card);
     padding: 45px 25px;
     border-radius: 12px;
-    border: 2px solid var(--barber-red);
+    border: 2px solid var(--gold);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
 }
 
@@ -486,7 +486,7 @@ header {
 .step-number {
     width: 38px;
     height: 38px;
-    background-color: var(--barber-red);
+    background-color: var(--gold);
     color: #FFFFFF;
     font-family: var(--font-title);
     font-weight: 700;

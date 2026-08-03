@@ -2,23 +2,24 @@
    VARIABLES & RESET UNIFICADO
    ========================================================================== */
 :root {
-    --primary: #F4EDE0;               /* Blanco cálido (marfil) */
-    --gold: #C9A24B;                  /* Dorado navaja clásica */
+    --primary: #FFFFFF;               /* Blanco Puro */
+    --gold: #C9A24B;                  /* Dorado Champagne */
     --gold-light: #E4C77D;
-    --barber-red: #D62839;            /* Rojo clásico de barbería */
-    --barber-blue: #1E5FAE;           /* Azul clásico de barbería */
-    --primary-glow: rgba(201, 162, 75, 0.18);
-    --bg-dark: #09090B;                /* Negro de fondo */
-    --bg-card: #131215;                /* Fondo base de tarjetas */
-    --bg-surface: #1B191D;             /* Superficie con relieve */
-    --text-light: #F4EDE0;
-    --text-muted: #9C9690;             /* Gris cálido */
-    --border-color: #262329;
-    --border-glow: rgba(201, 162, 75, 0.35);
+    --silver: #D1D1D6;                /* Plateado refinado */
+    --silver-muted: #8E8E93;          /* Gris metálico tenue */
+    
+    --bg-dark: #0A0A0C;                /* Negro profundo */
+    --bg-card: #121214;                /* Tarjeta negro mate */
+    --bg-surface: #18181C;             /* Superficie con relieve */
+    
+    --text-light: #FFFFFF;            /* Textos principales */
+    --text-muted: #A1A1A6;             /* Descripciones en plateado tenue */
+    --border-color: #242428;           /* Bordes finos */
+    --border-glow: rgba(201, 162, 75, 0.2);
+    
     --font-title: 'Oswald', sans-serif;
     --font-body: 'Montserrat', sans-serif;
     --transition: all 0.3s ease;
-    --pole-stripe: linear-gradient(115deg, var(--barber-red) 0 12.5%, var(--primary) 12.5% 25%, var(--barber-blue) 25% 37.5%, var(--primary) 37.5% 50%, var(--barber-red) 50% 62.5%, var(--primary) 62.5% 75%, var(--barber-blue) 75% 87.5%, var(--primary) 87.5% 100%);
 }
 
 *, *::before, *::after {
@@ -95,11 +96,11 @@ img {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 65px;
-    height: 5px;
+    width: 70px;
+    height: 2px;
     border-radius: 3px;
-    background: var(--pole-stripe);
-    background-size: 200% 100%;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    box-shadow: 0 0 8px rgba(201, 162, 75, 0.5);
 }
 
 .section-subtitle {
@@ -221,7 +222,8 @@ header {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--barber-red);
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(201, 162, 75, 0.3);
 }
 
 .hamburger {
@@ -299,7 +301,9 @@ header {
 
 .hero-badge {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(201, 162, 75, 0.4);
+    background-color: rgba(18, 18, 20, 0.7);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     color: var(--primary);
     border: 1px solid var(--primary);
     padding: 5px 14px;
@@ -312,7 +316,7 @@ header {
 }
 
 .hero-badge i {
-    color: var(--barber-red);
+    color: var(--gold);
 }
 
 /* CLASE UNIFICADA Y RESTRINGIDA PARA EVITAR QUE CREZCA DEMASIADO */
@@ -329,7 +333,10 @@ header {
 }
 
 .hero-title span {
-    color: var(--barber-red);
+    color: var(--gold);
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(201, 162, 75, 0.35);
 }
 
 .hero-description {
@@ -398,57 +405,83 @@ header {
 /* ==========================================================================
    BARBEROS / EQUIPO
    ========================================================================== */
-.barbers {
+barbers {
     background-color: var(--bg-card);
 }
 
 .barbers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    gap: 35px;
 }
 
 .barber-card {
-    background: linear-gradient(160deg, var(--bg-surface) 0%, var(--bg-card) 100%);
-    border-radius: 8px;
+    background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+    border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    transition: var(--transition);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+/* Efecto de elevación e interactividad al pasar el mouse */
+.barber-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(201, 162, 75, 0.15);
 }
 
 .barber-img {
-    height: 300px;
+    height: 240px;
     width: 100%;
     object-fit: cover;
+    object-position: top;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Zoom elegante en la foto al pasar el mouse por la tarjeta */
+.barber-card:hover .barber-img {
+    transform: scale(1.06); 
+    border-bottom-color: var(--gold);
 }
 
 .barber-info {
-    padding: 22px;
+    padding: 30px 25px;
     text-align: center;
+    position: relative;
+    z-index: 2; /* Evita que la foto pise el texto al hacer zoom */
+    background: inherit;
 }
 
 .barber-name {
     font-family: var(--font-title);
-    font-size: 1.4rem;
+    font-size: 1.25rem; /* Un poco más pequeño y fino */
+    font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: #FFFFFF;
 }
 
 .barber-role {
-    color: var(--barber-blue);
-    font-size: 0.82rem;
-    font-weight: 600;
+    color: var(--gold); /* Reemplazamos el azul por el dorado de la marca */
+    font-family: var(--font-body);
+    font-size: 0.75rem; /* Más pequeño para mayor delicadeza */
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    letter-spacing: 2.5px; /* Espaciado estilo "alta costura" */
+    margin-bottom: 15px;
+    display: block;
 }
 
 .barber-bio {
     color: var(--text-muted);
-    font-size: 0.88rem;
-    margin-bottom: 18px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    font-weight: 300; /* Letra más delgada y limpia */
 }
 
 /* ==========================================================================
@@ -523,12 +556,12 @@ header {
     width: 46px;
     height: 46px;
     background-color: var(--bg-card);
-    border: 1px solid var(--barber-blue);
+    border-color: var(--gold);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--barber-blue);
+    color: var(--gold);
     font-size: 1.2rem;
     flex-shrink: 0;
 }
@@ -623,14 +656,16 @@ header {
 }
 
 .filter-btn:hover {
-    border-color: var(--barber-red);
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
 .filter-btn.active {
-    background-color: var(--barber-blue);
-    color: #FFFFFF;
-    border-color: var(--barber-blue);
-    font-weight: 600;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    color: #0A0A0C;
+    border-color: var(--gold);
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(201, 162, 75, 0.25);
 }
 
 .accordions-container {
@@ -658,7 +693,7 @@ header {
     background-color: var(--bg-surface);
     transition: var(--transition);
     user-select: none;
-    border-left: 4px solid var(--barber-red);
+    border-left: 3px solid var(--border-color);
 }
 
 .accordion-header:hover {
@@ -690,12 +725,12 @@ header {
 
 .accordion-item.active .accordion-icon {
     transform: rotate(45deg);
-    color: var(--barber-red);
+    color: var(--gold);
 }
 
 .accordion-item.active .accordion-header {
-    border-bottom: 1px solid var(--border-color);
-    border-left-color: var(--barber-blue);
+    border-left-color: var(--gold);
+    background-color: rgba(201, 162, 75, 0.03);
 }
 
 .price-list-grid {
@@ -733,9 +768,10 @@ header {
 .price-cost {
     font-family: var(--font-title);
     font-size: 1.3rem;
-    color: var(--barber-red);
+    color: var(--gold);
     font-weight: 700;
     white-space: nowrap;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .price-desc {
@@ -807,11 +843,11 @@ header {
 }
 
 .modal-role-style {
-    color: var(--barber-blue);
-    font-size: 0.82rem;
-    font-weight: 600;
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-bottom: 15px;
 }
 
@@ -841,11 +877,12 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    color: var(--barber-blue);
-    border: 1px solid var(--barber-blue);
-    width: 44px;
-    height: 44px;
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo casi transparente */
+    backdrop-filter: blur(5px); /* Efecto cristal elegante */
+    color: #FFFFFF; /* Flecha blanca limpia */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde plateado/blanco sutil */
+    width: 48px; /* Tamaño ideal para tocar con el dedo en celular */
+    height: 48px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10000;
@@ -853,12 +890,15 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
+    
 
 .modal-nav:hover {
-    background-color: var(--barber-blue);
-    color: #FFFFFF;
+    background-color: var(--gold); /* Se ilumina en dorado al tocarlo/pasar el mouse */
+    color: #171310;
+    border-color: var(--gold);
+    transform: translateY(-50%) scale(1.08); /* Crece sutilmente */
 }
 
 .modal-prev { left: 15px; }
@@ -895,9 +935,11 @@ footer {
 }
 
 .social-icon:hover {
-    background-color: var(--barber-blue);
-    color: #FFFFFF;
+    background-color: var(--gold);
+    color: #0A0A0C;
     transform: translateY(-2px);
+    border-color: var(--gold);
+    box-shadow: 0 4px 12px rgba(201, 162, 75, 0.3);
 }
 
 .copyright {
@@ -994,4 +1036,59 @@ footer {
     .fresha-steps {
         grid-template-columns: 1fr;
     }
+
+    @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicación de entrada secuencial en las secciones Hero (Inicio y Servicios) */
+.hero-badge {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    animation-delay: 0.1s;
+}
+
+.hero-title {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+    /* Relieve y sombreado 3D sobrio */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 4px 12px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(201, 162, 75, 0.18);
+}
+
+.hero-description {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.hero-buttons {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    animation-delay: 0.7s;
+}
+
+/* Relieve para Títulos de Sección, Nombres de Barberos y Servicios */
+.section-title {
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.barber-name, 
+.price-name, 
+.accordion-title {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
+}
 }

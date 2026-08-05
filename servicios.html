@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Archivo CSS Externo -->
@@ -225,7 +225,7 @@
                 <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="#" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <p class="copyright">&copy; 2026 The Boss Barber's. Todos los derechos reservados.</p>
+            <p class="copyright">&copy; 2026 The Boss Barber's. Todos los derechos reservados. Página web diseñada por LUBU ® para integración con Fresha ™.</p>
         </div>
     </footer>
 
@@ -250,6 +250,20 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
+            const revealTargets = document.querySelectorAll('.accordion-item, .section-title, .section-subtitle');
+            revealTargets.forEach(el => el.classList.add('reveal'));
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.classList.add('is-visible');
+                        revealObserver.unobserve(el);
+                        setTimeout(() => el.classList.remove('reveal'), 750);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealTargets.forEach(el => revealObserver.observe(el));
+
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             
             if(accordionHeaders.length > 0) {

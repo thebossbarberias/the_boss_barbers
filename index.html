@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbería The Boss | Estilo & Cuidado Masculino</title>
+    <title>The Boss Barber's | Estilo & Cuidado Masculino</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Archivo CSS Externo -->
@@ -56,22 +56,22 @@
         <div class="container">
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fa-solid fa-user-ninja feature-icon"></i>
+                    <div class="feature-icon-badge"><i class="fa-solid fa-user-ninja feature-icon"></i></div>
                     <h3 class="feature-title">Barberos Expertos</h3>
                     <p class="feature-text">Profesionales capacitados en las últimas tendencias y técnicas de barbería tradicional.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-clock feature-icon"></i>
+                    <div class="feature-icon-badge"><i class="fa-solid fa-clock feature-icon"></i></div>
                     <h3 class="feature-title">Sin Esperas</h3>
                     <p class="feature-text">Agendamiento puntual a través de Fresha. Tu tiempo vale oro y lo respetamos.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-whiskey-glass feature-icon"></i>
+                    <div class="feature-icon-badge"><i class="fa-solid fa-whiskey-glass feature-icon"></i></div>
                     <h3 class="feature-title">Bebida de Cortesía</h3>
                     <p class="feature-text">Disfruta de un café expreso o una cerveza bien fría mientras renovamos tu imagen.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-pump-soap feature-icon"></i>
+                    <div class="feature-icon-badge"><i class="fa-solid fa-pump-soap feature-icon"></i></div>
                     <h3 class="feature-title">Productos Premium</h3>
                     <p class="feature-text">Utilizamos pomadas, aceites y tónicos de la más alta calidad para tu cabello y barba.</p>
                 </div>
@@ -100,8 +100,18 @@
 
             <div class="barbers-grid">
                 <!-- Barbero 1 -->
-                <div class="barber-card">
-                    <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img" title="Haz clic para ver galería">
+                <div class="barber-card" tabindex="0" role="button" aria-label="Ver perfil y galería de Nicolás Acevedo" data-gallery='["imagenes/nicolas-corte-1.jpg","imagenes/nicolas-corte-2.jpg","imagenes/nicolas-corte-3.jpg","imagenes/nicolas-corte-4.jpg"]'>
+                    
+                    <!-- CONTENEDOR CON CORTINA DE CRISTAL -->
+                    <div class="barber-image-container">
+                        <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img" title="Haz clic para ver perfil y galería">
+                        <div class="glass-curtain">
+                            <span class="gallery-text">
+                                <i class="fa-solid fa-images"></i> Ver Galería
+                            </span>
+                        </div>
+                    </div>
+                    
                     <div class="barber-info">
                         <h3 class="barber-name">Nicolás Acevedo</h3>
                         <p class="barber-role">Especialista en Fades, Diseños, Desvanecidos & Freestyle</p>
@@ -111,8 +121,18 @@
                 </div>
 
                 <!-- Barbero 2 -->
-                <div class="barber-card">
-                    <img src="imagenes/Leonisa_Style.jpg" alt="Barbero Leonardo Nossa" class="barber-img" title="Haz clic para ver galería">
+                <div class="barber-card" tabindex="0" role="button" aria-label="Ver perfil y galería de Leonardo Nossa" data-gallery='["imagenes/leonardo-corte-1.jpg","imagenes/leonardo-corte-2.jpg","imagenes/leonardo-corte-3.jpg","imagenes/leonardo-corte-4.jpg"]'>
+                    
+                    <!-- CONTENEDOR CON CORTINA DE CRISTAL -->
+                    <div class="barber-image-container">
+                        <img src="imagenes/Leonisa_Style.jpg" alt="Barbero Leonardo Nossa" class="barber-img" title="Haz clic para ver perfil y galería">
+                        <div class="glass-curtain">
+                            <span class="gallery-text">
+                                <i class="fa-solid fa-images"></i> Ver Galería
+                            </span>
+                        </div>
+                    </div>
+                    
                     <div class="barber-info">
                         <h3 class="barber-name">Leonardo Nossa</h3>
                         <p class="barber-role">Especialista en Asesoría de Imagen, Barbería Profesional</p>
@@ -132,9 +152,13 @@
         
         <div class="modal-dialog-box">
             <div class="modal-img-pane">
-                <img id="modalImg" src="" alt="Barbero Galería">
+                <div class="modal-img-main">
+                    <img id="modalImg" src="" alt="Foto del corte">
+                </div>
+                <div class="modal-thumbs" id="modalThumbs"></div>
             </div>
             <div class="modal-text-pane">
+                <span class="modal-eyebrow">Perfil del Barbero</span>
                 <h3 id="modalName" class="modal-title-style"></h3>
                 <p id="modalRole" class="modal-role-style"></p>
                 <p id="modalBio" class="modal-bio-style"></p>
@@ -231,7 +255,7 @@
                 <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="#" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <p class="copyright">&copy; 2026 The Boss Barber's. Todos los derechos reservados. Página web diseñada para integración con Fresha.</p>
+            <p class="copyright">&copy; 2026 The Boss Barber's. Todos los derechos reservados. Página web diseñada por LUBU ® para integración con Fresha ™.</p>
         </div>
     </footer>
 
@@ -259,6 +283,7 @@
         const modal = document.getElementById('modalGaleria');
         const cerrarModal = document.getElementById('cerrarModal');
         const modalImg = document.getElementById('modalImg');
+        const modalThumbs = document.getElementById('modalThumbs');
         const modalName = document.getElementById('modalName');
         const modalRole = document.getElementById('modalRole');
         const modalBio = document.getElementById('modalBio');
@@ -266,53 +291,129 @@
         const prevModal = document.getElementById('prevModal');
         const nextModal = document.getElementById('nextModal');
 
-        let currentIndex = 0;
+        const PLACEHOLDER_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23121214'/%3E%3Ctext x='50%25' y='47%25' fill='%23C9A24B' font-family='sans-serif' font-size='20' text-anchor='middle'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3Ctext x='50%25' y='58%25' fill='%23A1A1A6' font-family='sans-serif' font-size='14' text-anchor='middle'%3EFoto pr%C3%B3ximamente%3C/text%3E%3C/svg%3E";
+
+        let currentBarber = 0;
+        let currentPhoto = 0;
         const barbersData = [];
 
         barberCards.forEach((card, index) => {
-            const img = card.querySelector('.barber-img').src;
+            const mainImg = card.querySelector('.barber-img').src;
             const name = card.querySelector('.barber-name').textContent;
             const role = card.querySelector('.barber-role').textContent;
             const bio = card.querySelector('.barber-bio').textContent;
             const btnHref = card.querySelector('.btn').href;
 
-            barbersData.push({ img, name, role, bio, btnHref });
+            let extraPhotos = [];
+            try {
+                extraPhotos = JSON.parse(card.dataset.gallery || '[]');
+            } catch (e) {
+                extraPhotos = [];
+            }
 
-            card.querySelector('.barber-img').addEventListener('click', () => {
-                currentIndex = index;
-                updateModal();
-                modal.style.display = 'flex';
+            const gallery = [mainImg, ...extraPhotos];
+
+            barbersData.push({ gallery, name, role, bio, btnHref });
+
+            const abrirPerfil = () => {
+                currentBarber = index;
+                currentPhoto = 0;
+                abrirModal();
+            };
+
+            // Toda la tarjeta es clicable (imagen, cortina de cristal y barra de info)
+            card.addEventListener('click', abrirPerfil);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    abrirPerfil();
+                }
             });
         });
 
-        function updateModal() {
-            const data = barbersData[currentIndex];
-            modalImg.src = data.img;
+        function abrirModal() {
+            actualizarModal();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarLaModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function actualizarModal() {
+            const data = barbersData[currentBarber];
+            modalImg.src = data.gallery[currentPhoto];
             modalName.textContent = data.name;
             modalRole.textContent = data.role;
             modalBio.textContent = data.bio;
             modalBtn.href = data.btnHref;
+            renderMiniaturas(data.gallery);
         }
 
+        function renderMiniaturas(gallery) {
+            modalThumbs.innerHTML = '';
+            gallery.forEach((src, i) => {
+                const thumb = document.createElement('img');
+                thumb.src = src;
+                thumb.alt = 'Miniatura del corte ' + (i + 1);
+                thumb.className = 'modal-thumb' + (i === currentPhoto ? ' active' : '');
+                thumb.addEventListener('click', () => {
+                    currentPhoto = i;
+                    actualizarModal();
+                });
+                thumb.addEventListener('error', () => { thumb.src = PLACEHOLDER_IMG; });
+                modalThumbs.appendChild(thumb);
+            });
+        }
+
+        modalImg.addEventListener('error', () => { modalImg.src = PLACEHOLDER_IMG; });
+
         nextModal.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % barbersData.length;
-            updateModal();
+            const total = barbersData[currentBarber].gallery.length;
+            currentPhoto = (currentPhoto + 1) % total;
+            actualizarModal();
         });
 
         prevModal.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + barbersData.length) % barbersData.length;
-            updateModal();
+            const total = barbersData[currentBarber].gallery.length;
+            currentPhoto = (currentPhoto - 1 + total) % total;
+            actualizarModal();
         });
 
-        cerrarModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+        cerrarModal.addEventListener('click', cerrarLaModal);
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
+                cerrarLaModal();
             }
         });
+
+        window.addEventListener('keydown', (e) => {
+            if (modal.style.display !== 'flex') return;
+            if (e.key === 'Escape') cerrarLaModal();
+            if (e.key === 'ArrowRight') nextModal.click();
+            if (e.key === 'ArrowLeft') prevModal.click();
+        });
+
+        const revealTargets = document.querySelectorAll(
+            '.feature-card, .barber-card, .fresha-box, .contact-grid, .section-title, .section-subtitle'
+        );
+        revealTargets.forEach(el => el.classList.add('reveal'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.classList.add('is-visible');
+                    revealObserver.unobserve(el);
+                    setTimeout(() => el.classList.remove('reveal'), 750);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealTargets.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>

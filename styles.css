@@ -16,10 +16,25 @@
     --text-muted: #A1A1A6;             /* Descripciones en plateado tenue */
     --border-color: #242428;           /* Bordes finos */
     --border-glow: rgba(201, 162, 75, 0.2);
+
+    --gold-foil: linear-gradient(115deg, var(--gold) 15%, var(--gold-light) 35%, #FFF6DF 50%, var(--gold-light) 65%, var(--gold) 85%);
     
     --font-title: 'Oswald', sans-serif;
     --font-body: 'Montserrat', sans-serif;
+    --font-accent: 'Cormorant Garamond', serif;
     --transition: all 0.3s ease;
+}
+
+/* Textura fina de "grano" para dar sensación de material premium (cuero/papel) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
 }
 
 *, *::before, *::after {
@@ -333,19 +348,29 @@ header {
 }
 
 .hero-title span {
-    color: var(--gold);
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 20px rgba(201, 162, 75, 0.35);
+    background-image: var(--gold-foil);
+    background-size: 250% auto;
+    background-position: 0% center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: foilSheen 6s ease-in-out infinite;
+    filter: drop-shadow(0 2px 10px rgba(201, 162, 75, 0.25));
+}
+
+@keyframes foilSheen {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
 
 .hero-description {
-    color: #FFFFFF !important; /* Blanco puro para máximo contraste */
+    color: #FFFFFF !important;
     font-size: 1.05rem;
     font-weight: 500;
     max-width: 720px;
     margin: 0 auto 30px auto;
-    /* Sombra de texto profunda que aisla la letra del fondo de la foto */
     text-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.95),
         0 4px 12px rgba(0, 0, 0, 0.9),
@@ -388,10 +413,27 @@ header {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
+.feature-icon-badge {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 35% 30%, rgba(201,162,75,0.18), transparent 70%);
+    border: 1px solid rgba(201, 162, 75, 0.4);
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon-badge {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201, 162, 75, 0.25);
+}
+
 .feature-icon {
-    font-size: 2.2rem;
-    color: var(--barber-blue);
-    margin-bottom: 16px;
+    font-size: 1.6rem;
+    color: var(--gold);
 }
 
 .feature-title {
@@ -411,7 +453,7 @@ header {
    ========================================================================== */
 .barbers {
     background: var(--bg-dark);
-    padding: 45px 0; /* Padding reducido para que quepa en una sola pantalla */
+    padding: 45px 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
@@ -424,9 +466,10 @@ header {
 .barbers .section-subtitle,
 #barberos p {
     color: var(--text-muted);
-    margin-bottom: 30px; /* Espaciado ajustado */
+    margin-bottom: 30px;
     font-size: 0.9rem;
 }
+
 .barbers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -434,100 +477,189 @@ header {
 }
 
 .barber-card {
-    background: #FFFFFF; /* Tarjeta blanca de alto nivel */
+    position: relative;
+    aspect-ratio: 3 / 4;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(201, 162, 75, 0.5); /* Borde fino en dorado */
+    border: 1px solid rgba(201, 162, 75, 0.5);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: var(--bg-dark);
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    
 }
 
-.barber-card .btn-outline {
-    border: 1px solid #0A0A0C;
-    color: #0A0A0C;
-    background-color: transparent;
-    width: 100%;
-    padding: 8px 14px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: var(--transition);
+.barber-card:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
 }
 
-.barber-card:hover .btn-outline {
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-    color: #0A0A0C;
-    border-color: var(--gold);
-    box-shadow: 0 4px 12px rgba(201, 162, 75, 0.3);
-}
-
-.barber-card:hover {
+.barber-card:hover,
+.barber-card:focus-visible {
     transform: translateY(-10px) scale(1.01);
     border-color: var(--gold);
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.22), 0 0 20px rgba(201, 162, 75, 0.25);
 }
 
+/* Esquinas doradas tipo "ficha de socio" que aparecen al pasar el cursor */
+.barber-card::before,
+.barber-card::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--gold);
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.35s ease, width 0.35s ease, height 0.35s ease;
+    pointer-events: none;
+}
+
+.barber-card::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.barber-card::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+.barber-card:hover::before,
+.barber-card:hover::after {
+    opacity: 1;
+    width: 34px;
+    height: 34px;
+}
+
+/* ---- Foto a pantalla completa dentro de la tarjeta ---- */
+.barber-image-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
 .barber-img {
-    height: 190px; /* Reducido de 260px a 190px para optimizar el espacio vertical */
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: top;
-    cursor: pointer;
-    border-bottom: 1px solid #EAEAEA;
-    transition: transform 0.5s ease;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
 }
 
-/* Zoom elegante en la foto al pasar el mouse por la tarjeta */
-.barber-card:hover .barber-img {
-    transform: scale(1.04);
-    filter: brightness(1.05);
-    border-bottom-color: var(--gold);
+.barber-card:hover .barber-img,
+.barber-card:focus-visible .barber-img {
+    transform: scale(1.06);
+    filter: brightness(0.85);
 }
 
+/* ---- Cortina de cristal (glassmorphism) que aparece al pasar el cursor ---- */
+.glass-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 10, 12, 0.35);
+    backdrop-filter: blur(6px) saturate(140%);
+    -webkit-backdrop-filter: blur(6px) saturate(140%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.barber-card:hover .glass-curtain,
+.barber-card:focus-visible .glass-curtain {
+    opacity: 1;
+}
+
+.gallery-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold-light);
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 12px 24px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    background: rgba(10, 10, 12, 0.4);
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.barber-card:hover .gallery-text,
+.barber-card:focus-visible .gallery-text {
+    transform: translateY(0);
+}
+
+/* ---- Barra inferior de vidrio esmerilado (~20% de la tarjeta), SIEMPRE visible ---- */
 .barber-info {
-    padding: 20px 18px;
-    text-align: center;
-    position: relative;
-    z-index: 2; /* Evita que la foto pise el texto al hacer zoom */
-    background: #FFFFFF;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    min-height: 22%;
+    padding: 16px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0) 0%, rgba(6, 6, 8, 0.55) 35%, rgba(6, 6, 8, 0.9) 100%);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-top: 1px solid rgba(201, 162, 75, 0.35);
+    pointer-events: none; /* deja pasar el clic hacia la tarjeta / cortina de cristal */
 }
 
 .barber-name {
     font-family: var(--font-title);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin-bottom: 4px;
-    color: #0A0A0C;
-    text-shadow: none;
+    margin-bottom: 6px;
+    color: var(--text-light);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .barber-role {
-    color: #9E7B2F; /* Dorado sobrio visible sobre fondo blanco */
-    font-size: 0.72rem;
-    font-weight: 600;
+    color: var(--gold-light);
+    font-size: 0.63rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    display: block;
+    letter-spacing: 1.2px;
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid rgba(228, 199, 125, 0.4);
+    background: rgba(228, 199, 125, 0.08);
+    border-radius: 20px;
+    width: fit-content;
 }
 
-.barber-bio {
-    color: #4A4A4A; /* Gris oscuro elegante */
-    font-size: 0.82rem;
-    line-height: 1.45;
-    margin-bottom: 16px;
-    font-weight: 400;
+/* La biografía larga y el botón "Reservar" viven en el modal; en la tarjeta
+   se ocultan visualmente (el script sigue leyendo su contenido para el modal). */
+.barber-info .barber-bio,
+.barber-info .btn {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 /* ==========================================================================
    FRESHA BANNER
-   ========================================================================== */
-/* ==========================================================================
-   FRESHA BANNER (CON IMAGEN DE FONDO Y CAPA OSCURA)
    ========================================================================== */
 .fresha-banner {
     background: linear-gradient(180deg, rgba(9,9,11,0.85) 0%, rgba(9,9,11,0.92) 100%),
@@ -672,8 +804,8 @@ header {
 
 .search-box input:focus {
     outline: none;
-    border-color: var(--barber-blue);
-    box-shadow: 0 0 10px rgba(30, 95, 174, 0.3);
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(201, 162, 75, 0.3);
 }
 
 .filter-buttons {
@@ -747,7 +879,7 @@ header {
 }
 
 .accordion-icon {
-    color: var(--barber-blue);
+    color: var(--gold);
     font-size: 1.1rem;
     transition: transform 0.3s ease;
 }
@@ -853,16 +985,67 @@ header {
     flex: 1.2;
     background-color: #000;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    position: relative;
     min-height: 380px;
 }
 
-.modal-img-pane img {
+.modal-img-main {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    min-height: 300px;
+    background-color: #000;
+}
+
+.modal-img-main img {
     width: 100%;
     height: 100%;
     max-height: 500px;
     object-fit: cover;
+    display: block;
+}
+
+.modal-thumbs {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background-color: #050505;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.modal-thumb {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.modal-thumb:hover {
+    opacity: 0.85;
+}
+
+.modal-thumb.active {
+    opacity: 1;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(201, 162, 75, 0.4);
+}
+
+.modal-eyebrow {
+    display: block;
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 .modal-text-pane {
@@ -892,7 +1075,10 @@ header {
 
 .modal-bio-style {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.55;
     margin-bottom: 25px;
 }
 
@@ -909,18 +1095,18 @@ header {
 }
 
 .cerrar-modal:hover {
-    color: var(--barber-red);
+    color: #e74c3c;
 }
 
 .modal-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.05); /* Fondo casi transparente */
-    backdrop-filter: blur(5px); /* Efecto cristal elegante */
-    color: #FFFFFF; /* Flecha blanca limpia */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde plateado/blanco sutil */
-    width: 48px; /* Tamaño ideal para tocar con el dedo en celular */
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 48px;
     height: 48px;
     border-radius: 50%;
     cursor: pointer;
@@ -931,13 +1117,12 @@ header {
     font-size: 1.1rem;
     transition: all 0.3s ease;
 }
-    
 
 .modal-nav:hover {
-    background-color: var(--gold); /* Se ilumina en dorado al tocarlo/pasar el mouse */
+    background-color: var(--gold);
     color: #171310;
     border-color: var(--gold);
-    transform: translateY(-50%) scale(1.08); /* Crece sutilmente */
+    transform: translateY(-50%) scale(1.08);
 }
 
 .modal-prev { left: 15px; }
@@ -1050,6 +1235,13 @@ footer {
     .modal-img-pane {
         min-height: 240px;
     }
+    .modal-img-main {
+        min-height: 220px;
+    }
+    .modal-thumb {
+        width: 46px;
+        height: 46px;
+    }
     .contact-grid {
         grid-template-columns: 1fr;
     }
@@ -1075,8 +1267,49 @@ footer {
     .fresha-steps {
         grid-template-columns: 1fr;
     }
+}
 
-    @keyframes fadeInUp {
+/* ==========================================================================
+   REVELADO AL HACER SCROLL
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .hero-title span {
+        animation: none;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Foco visible para navegación con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   ANIMACIONES GLOBALES Y SOMBREADO
+   ========================================================================== */
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(35px);
@@ -1087,7 +1320,6 @@ footer {
     }
 }
 
-/* Aplicación de entrada secuencial en las secciones Hero (Inicio y Servicios) */
 .hero-badge {
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     opacity: 0;
@@ -1098,7 +1330,6 @@ footer {
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     opacity: 0;
     animation-delay: 0.3s;
-    /* Relieve y sombreado 3D sobrio */
     text-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.9),
         0 4px 12px rgba(0, 0, 0, 0.7),
@@ -1118,16 +1349,13 @@ footer {
     animation-delay: 0.7s;
 }
 
-/* Relieve para Títulos de Sección, Nombres de Barberos y Servicios */
 .section-title {
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 15px rgba(255, 255, 255, 0.05);
+    text-shadow: none; /* Elimina la mancha negra por completo */
 }
+
 
 .barber-name, 
 .price-name, 
 .accordion-title {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
-}
 }

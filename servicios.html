@@ -10,8 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Oswald:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Archivo CSS Externo -->
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- NUEVA RUTA CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- NUEVA RUTA JAVASCRIPT CON DEFER -->
+    <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -228,123 +232,5 @@
             <p class="copyright">&copy; 2026 The Boss Barber's. Todos los derechos reservados. Página web diseñada por LUBU ® para integración con Fresha ™.</p>
         </div>
     </footer>
-
-    <!-- SCRIPT -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealTargets = document.querySelectorAll('.accordion-item, .section-title, .section-subtitle');
-            revealTargets.forEach(el => el.classList.add('reveal'));
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        el.classList.add('is-visible');
-                        revealObserver.unobserve(el);
-                        setTimeout(() => el.classList.remove('reveal'), 750);
-                    }
-                });
-            }, { threshold: 0.1 });
-            revealTargets.forEach(el => revealObserver.observe(el));
-
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            const accordionItems = document.querySelectorAll('.accordion-item');
-            
-            if(accordionHeaders.length > 0) {
-                accordionHeaders[0].parentElement.classList.add('active');
-            }
-
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const item = header.parentElement;
-                    item.classList.toggle('active');
-                });
-            });
-
-            const filterBtns = document.querySelectorAll('.filter-btn');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    const category = btn.getAttribute('data-filter');
-
-                    accordionItems.forEach(item => {
-                        if (category === 'todos' || item.getAttribute('data-category') === category) {
-                            item.style.display = 'block';
-                            if (category !== 'todos') {
-                                item.classList.add('active');
-                            }
-                        } else {
-                            item.style.display = 'none';
-                            item.classList.remove('active');
-                        }
-                    });
-                });
-            });
-
-            const searchInput = document.getElementById('searchInput');
-            
-            searchInput.addEventListener('keyup', (e) => {
-                const searchString = e.target.value.toLowerCase().trim();
-                
-                // Si el usuario borra la búsqueda, reiniciamos la vista limpiamente
-                if(searchString === "") {
-                    document.querySelector('.filter-btn[data-filter="todos"]').click();
-                    accordionItems.forEach(item => item.classList.remove('active'));
-                    if(accordionItems.length > 0) accordionItems[0].classList.add('active');
-                    document.querySelectorAll('.price-item').forEach(item => item.style.display = 'block');
-                    return;
-                }
-
-                // Fuerza el botón "Todos" de forma visual cuando se busca activamente
-                filterBtns.forEach(b => b.classList.remove('active'));
-                document.querySelector('.filter-btn[data-filter="todos"]').classList.add('active');
-
-                accordionItems.forEach(accordion => {
-                    const priceItems = accordion.querySelectorAll('.price-item');
-                    let matchesInAccordion = 0;
-
-                    priceItems.forEach(item => {
-                        const name = item.querySelector('.price-name').textContent.toLowerCase();
-                        const desc = item.querySelector('.price-desc').textContent.toLowerCase();
-
-                        if (name.includes(searchString) || desc.includes(searchString)) {
-                            item.style.display = 'block';
-                            matchesInAccordion++;
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-
-                    if (matchesInAccordion > 0) {
-                        accordion.style.display = 'block';
-                        accordion.classList.add('active');
-                    } else {
-                        accordion.style.display = 'none';
-                        accordion.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

@@ -458,7 +458,7 @@ header {
 }
 
 /* ==========================================================================
-   NUESTRO EQUIPO (FOTOS MÁS ALTAS Y BOTÓN DORADO ESTILIZADO)
+   NUESTRO EQUIPO (TARJETAS PLATEADAS, MÁS ANGOSTAS Y BOTÓN DORADO ESTILIZADO)
    ========================================================================== */
 .barbers {
     background: linear-gradient(180deg, #0A0A0C 0%, #0A0A0C 10%, rgba(252, 250, 245, 0.08) 50%, #0A0A0C 90%, #0A0A0C 100%);
@@ -541,7 +541,7 @@ header {
 .barber-image-container {
     position: relative;
     width: 100%;
-    height: 330px; /* Aumentado a petición para que las fotos sean más altas a lo alto */
+    height: 330px; 
     overflow: hidden;
     background-color: #000;
 }
@@ -560,34 +560,35 @@ header {
     filter: brightness(0.9);
 }
 
+/* CAJA DE INFORMACIÓN PLATEADA */
 .barber-info {
     position: relative;
-    padding: 16px 16px 18px;
-    background: linear-gradient(135deg, #1f1f24 0%, #121214 50%, #0a0a0c 100%);
-    border-top: 1px solid rgba(201, 162, 75, 0.4);
+    padding: 18px 14px;
+    background: linear-gradient(135deg, #EAEAEA 0%, #D1D1D6 50%, #BEBEC4 100%);
+    border-top: 1px solid rgba(201, 162, 75, 0.6);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     flex-grow: 1; 
-    justify-content: space-between;
+    gap: 8px;
 }
 
 .barber-name {
     font-family: var(--font-title);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--gold);
+    color: #121214;
     text-align: center;
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .barber-name::after {
@@ -607,60 +608,72 @@ header {
         #FFFFFF 16px,
         #FFFFFF 21px
     );
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .barber-role {
-    color: var(--text-light);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: none; 
-    letter-spacing: 0.3px;
+    color: #121214;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.35;
     max-width: 95%;
-    margin-bottom: 14px;
 }
 
-.barber-info .barber-bio {
+/* AQUÍ ESTÁ EL AJUSTE PRINCIPAL: OCULTAMOS LA BIO DE LA TARJETA VISUAL */
+.barber-bio {
     display: none;
 }
 
-.barber-info .btn-reservar,
-.barber-info a[class*="reservar"],
-.barber-info button[class*="reservar"],
-.barber-info .btn:nth-child(n+2) {
-    display: none !important;
-}
-
-/* BOTÓN DORADO ESTILIZADO Y COMPACTO */
-.barber-info .btn {
+/* ESTILOS DE LOS BOTONES */
+.barber-info .btn-nav,
+.barber-info .btn-perfil {
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 18px;
+    padding: 9px 14px;
     font-family: var(--font-title);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 4px;
     cursor: pointer;
-    border: none;
     transition: var(--transition);
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Botón 1: Reservar (Dorado) */
+.barber-info .btn-nav {
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, #9c7a2e 100%);
     color: #171310;
-    box-shadow: 0 4px 14px rgba(201, 162, 75, 0.25);
-    margin-top: auto; 
-    text-decoration: none;
+    border: none;
+    margin-top: 4px;
 }
 
-.barber-info .btn:hover {
+.barber-info .btn-nav:hover {
     background: linear-gradient(135deg, #EED89A 0%, var(--gold-light) 55%, var(--gold) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(201, 162, 75, 0.35);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    color: #171310;
 }
 
+/* Botón 2: Ver Perfil y Galería (Oscuro con borde dorado) */
+.barber-info .btn-perfil {
+    background: var(--bg-card);
+    color: var(--text-light);
+    border: 1px solid var(--gold);
+}
+
+.barber-info .btn-perfil:hover {
+    background: var(--bg-surface);
+    color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
 /* ==========================================================================
    RESTO DE SECCIONES (Fresha, Contacto, Modal, etc.)
    ========================================================================== */

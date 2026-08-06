@@ -102,7 +102,6 @@
                 <!-- Barbero 1 -->
                 <div class="barber-card" tabindex="0" role="button" aria-label="Ver perfil y galería de Nicolás Acevedo" data-gallery='["imagenes/nicolas-corte-1.jpg","imagenes/nicolas-corte-2.jpg","imagenes/nicolas-corte-3.jpg","imagenes/nicolas-corte-4.jpg"]'>
                     
-                    <!-- CONTENEDOR CON CORTINA DE CRISTAL -->
                     <div class="barber-image-container">
                         <img src="imagenes/Makakikuz_Style.png" alt="Barbero Nicolás Acevedo" class="barber-img" title="Haz clic para ver perfil y galería">
                         <div class="glass-curtain">
@@ -115,7 +114,9 @@
                     <div class="barber-info">
                         <h3 class="barber-name">Nicolás Acevedo</h3>
                         <p class="barber-role">Especialista en Fades, Diseños, Desvanecidos & Freestyle</p>
-                        <p class="barber-bio">Más de 12 años de experiencia. Maestro en degradados pulidos y arreglos de barba de alta precisión.</p>
+                        <!-- Biografía oculta para la tarjeta, pero visible en el modal -->
+                        <p class="barber-bio">Especialista apasionado por los cortes modernos y el freestyle, garantizando un estilo único y personalizado para cada cliente.</p>
+                        
                         <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline btn-nav">Reservar con Makakikuz</a>
                         <button class="btn-perfil">Ver Perfil y Galería</button>
                     </div>
@@ -124,7 +125,6 @@
                 <!-- Barbero 2 -->
                 <div class="barber-card" tabindex="0" role="button" aria-label="Ver perfil y galería de Leonardo Nossa" data-gallery='["imagenes/leonardo-corte-1.jpg","imagenes/leonardo-corte-2.jpg","imagenes/leonardo-corte-3.jpg","imagenes/leonardo-corte-4.jpg"]'>
                     
-                    <!-- CONTENEDOR CON CORTINA DE CRISTAL -->
                     <div class="barber-image-container">
                         <img src="imagenes/Leonisa_Style.jpg" alt="Barbero Leonardo Nossa" class="barber-img" title="Haz clic para ver perfil y galería">
                         <div class="glass-curtain">
@@ -137,7 +137,9 @@
                     <div class="barber-info">
                         <h3 class="barber-name">Leonardo Nossa</h3>
                         <p class="barber-role">Especialista en Asesoría de Imagen, Barbería Profesional</p>
+                        <!-- Biografía oculta para la tarjeta, pero visible en el modal -->
                         <p class="barber-bio">Barbero reconocido a nivel nacional por sus cortes modernos y tradicionales, estilos ejecutivos y tratamiento especializado del cabello.</p>
+                        
                         <a href="https://www.fresha.com/book-now/the-boss-barbers-hrlbjr75/all-offer?share=true&pId=3057508" target="_blank" class="btn btn-outline btn-nav">Reservar con LEONISA</a>
                         <button class="btn-perfil">Ver Perfil</button>
                     </div>
@@ -303,7 +305,11 @@
             const mainImg = card.querySelector('.barber-img').src;
             const name = card.querySelector('.barber-name').textContent;
             const role = card.querySelector('.barber-role').textContent;
-            const bio = card.querySelector('.barber-bio').textContent;
+            
+            // Validación de seguridad para la biografía por si algún barbero no la tiene
+            const bioElement = card.querySelector('.barber-bio');
+            const bio = bioElement ? bioElement.textContent : 'Perfil del barbero en construcción.';
+            
             const btnHref = card.querySelector('.btn').href;
 
             let extraPhotos = [];
@@ -323,7 +329,6 @@
                 abrirModal();
             };
 
-            // Toda la tarjeta es clicable (imagen, cortina de cristal y barra de info)
             card.addEventListener('click', abrirPerfil);
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
